@@ -1,0 +1,7 @@
+# Dream Team's Design System
+
+Ce storybook a pour objectif de présenter **tous les composants réutilasables sur nos sites** (inputs, selects, checkboxes, etc...).
+
+Ces composants sont également utilisés dans plusieurs plusieurs autres composants présents dans `esf-components` notament (formulaire de contact générique, bookking-form, etc...)
+
+**Chaque élement de ce Design System est présenté dans plusieurs variantes**. Vous pouvez jouer avec les propriétés dans la partie inferieure de votre écran après avoir selectionné un composant spécifique.
