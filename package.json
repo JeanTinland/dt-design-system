@@ -18,6 +18,7 @@
     "@storybook/addon-interactions": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
     "@storybook/react": "^6.4.19",
+    "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/testing-library": "^0.0.9",
     "babel-loader": "^8.2.4",
     "classnames": "^2.3.1",
@@ -32,7 +33,8 @@
     "postbuild": "cpx './src/**/*.css' ./dist",
     "watch": "babel ./src -x '.js' -d ./dist -w & cpx './src/**/*.css' ./dist -w",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build"
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "files": [
     "dist",
