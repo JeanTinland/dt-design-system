@@ -53,8 +53,8 @@ WithoutLabel.args = {
   placeholder: 'Message'
 }
 
-export const EmailWithError = Template.bind({})
-EmailWithError.args = {
+export const WithError = Template.bind({})
+WithError.args = {
   label: 'Votre message',
   value:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, felis a ullamcorper accumsan, nibh ligula tincidunt justo, quis iaculis libero nisl in leo.',
