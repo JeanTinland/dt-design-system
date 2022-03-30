@@ -1,6 +1,6 @@
 {
   "name": "dt-design-system",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "peerDependencies": {
     "classnames": "^2.3.1",
     "react": "^17.0.2",
@@ -48,7 +48,8 @@
   "files": [
     "dist",
     "input.js",
-    "select.js"
+    "select.js",
+    "textarea.js"
   ],
   "browserslist": [
     ">1%",
