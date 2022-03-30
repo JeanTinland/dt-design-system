@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import css from '../input/input.module.css'
 
 const Select = ({
-  inputRef,
+  fieldRef,
   label,
   options = [],
   className,
@@ -16,12 +16,11 @@ const Select = ({
   onChange
 }) => {
   const _onChange = (e) => {
-    onChange(e.target.value)
+    onChange?.(e.target.value)
   }
 
   const classes = classnames(css.select, {
     [css.compact]: compact,
-    [css.inputError]: errorMessage,
     [className]: className
   })
 
@@ -32,7 +31,7 @@ const Select = ({
         <div className={css.outer}>
           <div className={css.inner}>
             <select
-              ref={inputRef}
+              ref={fieldRef}
               className={css.field}
               value={value}
               onChange={_onChange}

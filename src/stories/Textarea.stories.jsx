@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Select from '../components/select'
+import TextArea from '../components/textarea'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'DesignSystem/Select',
-  component: Select,
+  title: 'DesignSystem/TextArea',
+  component: TextArea,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     fieldRef: {
@@ -31,47 +31,44 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
   <div style={{ width: '100%', maxWidth: 400, margin: '0 auto', padding: '30px 0' }}>
-    <Select {...args} />
+    <TextArea {...args} />
   </div>
 )
 
 export const Basic = Template.bind({})
 Basic.args = {
-  label: 'Les options',
-  options: [
-    { label: 'Selectionnez une option', value: '' },
-    { label: 'Option 1', value: 1 },
-    { label: 'Option 2', value: 2 },
-    { label: 'Option 3', value: 3 },
-    { label: 'Option 4', value: 4 },
-    { label: 'Option 5', value: 5 }
-  ]
+  label: 'Message',
+  placeholder: 'Votre message...'
 }
 
-export const WithError = Template.bind({})
-WithError.args = {
-  label: 'Les options',
-  options: [
-    { label: 'Selectionnez une option', value: '' },
-    { label: 'Option 1', value: 1 },
-    { label: 'Option 2', value: 2 },
-    { label: 'Option 3', value: 3 },
-    { label: 'Option 4', value: 4 },
-    { label: 'Option 5', value: 5 }
-  ],
-  errorMessage: 'Veuillez selectionner une option'
+export const AutoSizingHeight = Template.bind({})
+AutoSizingHeight.args = {
+  label: 'Message',
+  placeholder: 'Votre message...',
+  autoSizing: true
+}
+
+export const WithoutLabel = Template.bind({})
+WithoutLabel.args = {
+  placeholder: 'Message'
+}
+
+export const EmailWithError = Template.bind({})
+EmailWithError.args = {
+  label: 'Votre message',
+  value:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, felis a ullamcorper accumsan, nibh ligula tincidunt justo, quis iaculis libero nisl in leo.',
+  errorMessage: 'Votre message est trop long'
+}
+
+export const WithDecoration = Template.bind({})
+WithDecoration.args = {
+  label: 'Label'
 }
 
 export const Compact = Template.bind({})
 Compact.args = {
-  label: 'Les options',
-  options: [
-    { label: 'Selectionnez une option', value: '' },
-    { label: 'Option 1', value: 1 },
-    { label: 'Option 2', value: 2 },
-    { label: 'Option 3', value: 3 },
-    { label: 'Option 4', value: 4 },
-    { label: 'Option 5', value: 5 }
-  ],
+  label: 'Message',
+  placeholder: 'Votre message...',
   compact: true
 }

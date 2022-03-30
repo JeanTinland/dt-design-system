@@ -7,8 +7,8 @@ export default {
   component: Input,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    inputRef: {
-      name: 'inputRef',
+    fieldRef: {
+      name: 'fieldRef',
       description: 'Référence React : React.useRef()'
     },
     label: {

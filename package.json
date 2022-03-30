@@ -1,6 +1,6 @@
 {
   "name": "dt-design-system",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "peerDependencies": {
     "classnames": "^2.3.1",
     "react": "^17.0.2",
