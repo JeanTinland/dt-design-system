@@ -2,31 +2,53 @@ import * as React from 'react'
 import classnames from 'classnames'
 import css from './select.module.css'
 
-const Input = ({ inputRef, type = 'text', label, placeholder, error, compact, value, onChange }) => {
+const Select = ({
+  inputRef,
+  label,
+  options = [],
+  errorMessage,
+  compact,
+  value,
+  autoFocus,
+  disabled,
+  readOnly,
+  onChange
+}) => {
+  const _onChange = (e) => {
+    onChange(e.target.value)
+  }
+
   const classes = classnames(css.input, {
     [css.compact]: compact,
-    [css.inputError]: error,
-    [css[type]]: type
+    [css.inputError]: errorMessage
   })
+
   return (
     <div className={classes}>
       <label className={css.label}>
         {label && <span className={css.labelText}>{label}</span>}
         <div className={css.outer}>
           <div className={css.inner}>
-            <input
+            <select
               ref={inputRef}
-              type={type}
               className={css.field}
               value={value}
-              onChange={onChange}
-              placeholder={placeholder}
-            />
+              onChange={_onChange}
+              autoFocus={autoFocus}
+              disabled={disabled}
+              readOnly={readOnly}
+            >
+              {options.map((option) => (
+                <option key={option?.value ?? option} value={option?.value ?? option}>
+                  {option?.label ?? option}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </label>
-      {error && <div className={css.error}>{error}</div>}
+      {errorMessage && <div className={css.error}>{errorMessage}</div>}
     </div>
   )
 }
-export default Input
+export default Select
