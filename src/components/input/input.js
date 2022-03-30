@@ -2,7 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import css from './input.module.css'
 
-const Input = ({ inputRef, type = 'text', label, placeholder, errorMessage, compact, value, onChange }) => {
+const Input = ({ inputRef, type = 'text', label, placeholder, className, errorMessage, compact, value, onChange }) => {
   const _onChange = (e) => {
     onChange(e.target.value)
   }
@@ -10,7 +10,8 @@ const Input = ({ inputRef, type = 'text', label, placeholder, errorMessage, comp
   const classes = classnames(css.input, {
     [css.compact]: compact,
     [css.inputError]: errorMessage,
-    [css[type]]: type
+    [css[type]]: type,
+    [className]: className
   })
 
   return (

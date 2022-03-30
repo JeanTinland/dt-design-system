@@ -6,6 +6,7 @@ const Select = ({
   inputRef,
   label,
   options = [],
+  className,
   errorMessage,
   compact,
   value,
@@ -20,7 +21,8 @@ const Select = ({
 
   const classes = classnames(css.input, {
     [css.compact]: compact,
-    [css.inputError]: errorMessage
+    [css.inputError]: errorMessage,
+    [className]: className
   })
 
   return (
