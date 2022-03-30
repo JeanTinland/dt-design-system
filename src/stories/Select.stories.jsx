@@ -19,6 +19,11 @@ export default {
     errorMessage: {
       name: 'errorMessage',
       control: 'text'
+    },
+    compact: {
+      name: 'compact',
+      description: 'Version réduite du champ avec moins de padding & taille de police réduite',
+      control: 'boolean'
     }
   }
 }
@@ -34,30 +39,12 @@ export const Basic = Template.bind({})
 Basic.args = {
   label: 'Les options',
   options: [
-    {
-      label: 'Selectionnez',
-      value: ''
-    },
-    {
-      label: 'Option 1',
-      value: 1
-    },
-    {
-      label: 'Option 2',
-      value: 2
-    },
-    {
-      label: 'Option 3',
-      value: 3
-    },
-    {
-      label: 'Option 4',
-      value: 4
-    },
-    {
-      label: 'Option 5',
-      value: 5
-    }
+    { label: 'Selectionnez une option', value: '' },
+    { label: 'Option 1', value: 1 },
+    { label: 'Option 2', value: 2 },
+    { label: 'Option 3', value: 3 },
+    { label: 'Option 4', value: 4 },
+    { label: 'Option 5', value: 5 }
   ]
 }
 
@@ -65,30 +52,26 @@ export const WithError = Template.bind({})
 WithError.args = {
   label: 'Les options',
   options: [
-    {
-      label: 'Selectionnez',
-      value: ''
-    },
-    {
-      label: 'Option 1',
-      value: 1
-    },
-    {
-      label: 'Option 2',
-      value: 2
-    },
-    {
-      label: 'Option 3',
-      value: 3
-    },
-    {
-      label: 'Option 4',
-      value: 4
-    },
-    {
-      label: 'Option 5',
-      value: 5
-    }
+    { label: 'Selectionnez une option', value: '' },
+    { label: 'Option 1', value: 1 },
+    { label: 'Option 2', value: 2 },
+    { label: 'Option 3', value: 3 },
+    { label: 'Option 4', value: 4 },
+    { label: 'Option 5', value: 5 }
   ],
   errorMessage: 'Veuillez selectionner une option'
+}
+
+export const Compact = Template.bind({})
+Compact.args = {
+  label: 'Les options',
+  options: [
+    { label: 'Selectionnez une option', value: '' },
+    { label: 'Option 1', value: 1 },
+    { label: 'Option 2', value: 2 },
+    { label: 'Option 3', value: 3 },
+    { label: 'Option 4', value: 4 },
+    { label: 'Option 5', value: 5 }
+  ],
+  compact: true
 }

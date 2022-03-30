@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import css from './select.module.css'
+import css from '../input/input.module.css'
 
 const Select = ({
   inputRef,
@@ -19,7 +19,7 @@ const Select = ({
     onChange(e.target.value)
   }
 
-  const classes = classnames(css.input, {
+  const classes = classnames(css.select, {
     [css.compact]: compact,
     [css.inputError]: errorMessage,
     [className]: className

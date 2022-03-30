@@ -25,6 +25,11 @@ export default {
     errorMessage: {
       name: 'errorMessage',
       control: 'text'
+    },
+    compact: {
+      name: 'compact',
+      description: 'Version réduite du champ avec moins de padding & taille de police réduite',
+      control: 'boolean'
     }
   }
 }

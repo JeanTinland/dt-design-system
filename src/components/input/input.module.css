@@ -1,8 +1,9 @@
 .input,
+.select,
 .label {
   display: flex;
   flex-direction: column;
-  font-family: var(--ds-sans-serif-font);
+  font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
   gap: 3px;
 }
 
@@ -17,39 +18,29 @@
   flex: 1 1 100%;
   position: relative;
   border-radius: var(--ds-radius-100, 3px);
-  z-index: 0;
 }
 
 .inner::before {
+  background-color: var(--ds-input-background, var(--ds-grey-100, #f5f5f5));
+}
+
+.inner::before,
+.inner::after {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   content: '';
-  background-color: var(--ds-grey-100, #f5f5f5);
   border-radius: inherit;
-  z-index: 1;
-  opacity: 0.6;
   pointer-events: none;
   touch-action: none;
 }
 
 .inner::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: '';
-  background-color: var(--ds-grey-300, #d3d3d3);
+  background-color: var(--ds-input-background-filler, var(--ds-grey-200, #efefef));
   transform: scaleX(0);
   transform-origin: left center;
-  border-radius: inherit;
-  z-index: 2;
-  opacity: 0.25;
-  pointer-events: none;
-  touch-action: none;
   transition: transform 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
@@ -62,6 +53,7 @@
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  color: var(--ds-input-foreground, var(--ds-grey-700, #171e30));
   font-size: 16px;
   font-family: var(--ds-sans-serif-font);
   background-color: transparent;
@@ -81,15 +73,32 @@
   outline-offset: 2px;
 }
 
+.select .field {
+  padding: 8px 32px 8px 8px;
+  appearance: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'%3E%3C/path%3E%3C/svg%3E");
+  background-position: calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 18px;
+}
+
+.select.compact .field,
+.input.compact .field {
+  font-size: 14px;
+}
+
+.select.compact .field {
+  padding: 5px 28px 5px 5px;
+}
+
 .input.compact .field {
   padding: 5px;
-  font-size: 14px;
 }
 
 .error {
   padding: 0 3px;
   color: var(--ds-red, #f26464);
   font-style: italic;
-  /* text-transform: uppercase; */
   font-size: 11px;
 }
