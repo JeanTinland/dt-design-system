@@ -1,0 +1,77 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+// import React from 'react'
+import Input from '../components/input'
+import * as Icons from '../components/icons'
+
+<Meta title="Icons" />
+
+export const IconsDemo = () => {
+  const [search, setSearch] = React.useState('')
+  const normalize = (str) =>
+    str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+  const copyToClipboard = async (key) => {
+    await navigator.clipboard.writeText(key)
+  }
+  return (
+    <>
+      <div className="demo-filters">
+        <Input
+          label="Rechercher"
+          placeholder="Nom de l'icone"
+          className="demo-filters__input"
+          value={search}
+          onChange={setSearch}
+        />
+      </div>
+      <div className="demo-container demo-container--icons">
+        {Object.keys(Icons)
+          .sort((a, b) => a.localeCompare(b))
+          .filter((key) => normalize(key).includes(normalize(search)))
+          .map((key) => {
+            const Icon = Icons[key]
+            return (
+              <button key={key} className="demo-container__icon-container" onClick={() => copyToClipboard(key)}>
+                <Icon className="demo-container__icon" />
+                <span className="demo-container__icon-name">{key}</span>
+              </button>
+            )
+          })}
+      </div>
+    </>
+  )
+}
+
+# Les icones
+
+## Usage
+
+### Rendu
+
+<div className="my-component">
+  <Icons.AlertCircle className="my-component__icon" />
+</div>
+
+### Code
+
+```javascript
+import * as Icons from 'dt-design-system/icons'
+
+const MyComponent = () => {
+  return (
+    <div className="my-component">
+      <Icons.AlertCircle className="my-component__icon" />
+    </div>
+  )
+}
+
+export default MyComponent
+```
+
+## Librairie
+
+Cliquez sur une icone pour copier son nom dans votre presse-papier :
+
+<IconsDemo />

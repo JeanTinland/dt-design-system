@@ -2,7 +2,22 @@ import * as React from 'react'
 import classnames from 'classnames'
 import css from './input.module.css'
 
-const Input = ({ fieldRef, type = 'text', label, placeholder, className, errorMessage, compact, value, onChange }) => {
+const Input = ({
+  fieldRef,
+  type = 'text',
+  label,
+  placeholder,
+  className,
+  errorMessage,
+  compact,
+  value,
+  autoFocus,
+  required,
+  disabled,
+  readOnly,
+  onChange,
+  fieldProps = {}
+}) => {
   const _onChange = (e) => {
     onChange?.(e.target.value)
   }
@@ -24,7 +39,12 @@ const Input = ({ fieldRef, type = 'text', label, placeholder, className, errorMe
             className={css.field}
             value={value}
             onChange={_onChange}
+            autoFocus={autoFocus}
             placeholder={placeholder}
+            required={required}
+            disabled={disabled}
+            readOnly={readOnly}
+            {...fieldProps}
           />
         </div>
       </label>

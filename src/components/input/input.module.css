@@ -62,7 +62,6 @@
   border: none;
   border-radius: inherit;
   outline: none;
-  transition: transform 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
   z-index: 1;
 }
 
@@ -70,9 +69,18 @@
   font-style: italic;
 }
 
+.field:read-only {
+  cursor: default;
+}
+
+.field:disabled {
+  cursor: not-allowed;
+  filter: grayscale(100%) opacity(40%);
+}
+
 .field:focus-visible {
-  outline: 2px solid var(--ds-blue-400, #4177f6);
-  outline-offset: 2px;
+  outline: var(--ds-focus-ring-width, 2px) solid var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
+  outline-offset: var(--ds-focus-ring-offset, 2px);
 }
 
 .select .field {

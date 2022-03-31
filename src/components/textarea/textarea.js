@@ -12,7 +12,10 @@ const TextArea = ({
   compact,
   value,
   onChange,
-  autoSizing
+  autoSizing,
+  disabled,
+  readOnly,
+  fieldProps = {}
 }) => {
   const innerRef = React.useRef()
 
@@ -26,10 +29,9 @@ const TextArea = ({
     const field = container.querySelector('textarea')
     field.style.height = 'inherit'
     const computedStyle = window.getComputedStyle(field)
-    const height =
-      parseInt(computedStyle.getPropertyValue('padding-top'), 10) +
-      field.scrollHeight +
-      parseInt(computedStyle.getPropertyValue('padding-bottom'), 10)
+    const paddingTop = parseInt(computedStyle.getPropertyValue('padding-top') ?? 0)
+    const paddingBottom = parseInt(computedStyle.getPropertyValue('padding-bottom') ?? 0)
+    const height = paddingTop + field.scrollHeight + paddingBottom
     field.style.height = `${height}px`
   }, [autoSizing])
 
@@ -56,6 +58,9 @@ const TextArea = ({
             onInput={updateTextAreaHeight}
             onFocus={updateTextAreaHeight}
             placeholder={placeholder}
+            disabled={disabled}
+            readOnly={readOnly}
+            {...fieldProps}
           />
         </div>
       </label>

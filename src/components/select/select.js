@@ -11,9 +11,11 @@ const Select = ({
   compact,
   value,
   autoFocus,
+  required,
   disabled,
   readOnly,
-  onChange
+  onChange,
+  fieldProps = {}
 }) => {
   const _onChange = (e) => {
     onChange?.(e.target.value)
@@ -36,8 +38,10 @@ const Select = ({
               value={value}
               onChange={_onChange}
               autoFocus={autoFocus}
+              required={required}
               disabled={disabled}
               readOnly={readOnly}
+              {...fieldProps}
             >
               {options.map((option) => (
                 <option key={option?.value ?? option} value={option?.value ?? option}>
