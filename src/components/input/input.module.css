@@ -59,7 +59,7 @@
   font-size: 16px;
   font-family: var(--ds-sans-serif-font);
   background-color: transparent;
-  border: none;
+  border: var(--ds-input-border, 0);
   border-radius: inherit;
   outline: none;
   z-index: 1;

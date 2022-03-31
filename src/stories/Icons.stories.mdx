@@ -1,5 +1,4 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-// import React from 'react'
 import Input from '../components/input'
 import * as Icons from '../components/icons'
 
@@ -7,13 +6,18 @@ import * as Icons from '../components/icons'
 
 export const IconsDemo = () => {
   const [search, setSearch] = React.useState('')
+  const [copied, setCopied] = React.useState(false)
+  const [copyTimeout, setCopyTimeout] = React.useState()
   const normalize = (str) =>
     str
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
   const copyToClipboard = async (key) => {
+    clearTimeout(copyTimeout)
     await navigator.clipboard.writeText(key)
+    setCopied(key)
+    setCopyTimeout(setTimeout(() => setCopied(false), 1800))
   }
   return (
     <>
@@ -31,11 +35,13 @@ export const IconsDemo = () => {
           .sort((a, b) => a.localeCompare(b))
           .filter((key) => normalize(key).includes(normalize(search)))
           .map((key) => {
-            const Icon = Icons[key]
+            const isCopied = copied === key
+            const Icon = Icons[isCopied ? 'Check' : key]
+            const color = isCopied ? 'var(--ds-green)' : 'currentColor'
             return (
               <button key={key} className="demo-container__icon-container" onClick={() => copyToClipboard(key)}>
-                <Icon className="demo-container__icon" />
-                <span className="demo-container__icon-name">{key}</span>
+                <Icon className="demo-container__icon" style={{ fill: color }} />
+                <span className="demo-container__icon-name">{isCopied ? 'Copié' : key}</span>
               </button>
             )
           })}
