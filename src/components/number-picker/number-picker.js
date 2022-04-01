@@ -23,7 +23,7 @@ const isBelow = (val, min, disabled) => disabled || val <= min
 
 const isAbove = (val, max, disabled) => disabled || val >= max
 
-const NumberPicker = ({ label, min, max, value, disabled, onChange }) => {
+const NumberPicker = ({ label, min = 0, max = Infinity, value, disabled, onChange }) => {
   const classes = classnames(css.picker, {
     [css.active]: value > 0,
     [css.disabled]: disabled
