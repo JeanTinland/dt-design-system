@@ -26,7 +26,6 @@ const Input = ({
 
   const classes = classnames(css.input, {
     [css.compact]: compact,
-    [css[type]]: type,
     [className]: className,
     [css.valid]: valid,
     [css.error]: error
