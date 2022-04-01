@@ -16,10 +16,15 @@ export default {
       description: '`string` - Label apparaissant au dessus du champ',
       control: 'text'
     },
-    errorMessage: {
-      name: 'errorMessage',
+    error: {
+      name: 'error',
       control: 'text',
-      description: "`string` - Message d'erreur affiché en rouge sous le champ"
+      description: "`boolean | string` - Message d'erreur affiché en rouge sous le champ"
+    },
+    valid: {
+      name: 'valid',
+      control: 'boolean',
+      description: '`boolean` - Champ valid'
     },
     compact: {
       name: 'compact',
@@ -78,7 +83,8 @@ WithError.args = {
   label: 'Votre message',
   value:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, felis a ullamcorper accumsan, nibh ligula tincidunt justo, quis iaculis libero nisl in leo.',
-  errorMessage: 'Votre message est trop long'
+  autoSizing: true,
+  error: 'Votre message est trop long'
 }
 
 export const Compact = Template.bind({})

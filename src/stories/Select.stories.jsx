@@ -22,10 +22,15 @@ export default {
       control: 'select',
       options: ['text', 'date', 'email', 'phone']
     },
-    errorMessage: {
-      name: 'errorMessage',
+    error: {
+      name: 'error',
       control: 'text',
-      description: "`string` - Message d'erreur affiché en rouge sous le champ"
+      description: "`boolean | string` - Message d'erreur affiché en rouge sous le champ"
+    },
+    valid: {
+      name: 'valid',
+      control: 'boolean',
+      description: '`boolean` - Champ valid'
     },
     compact: {
       name: 'compact',
@@ -85,7 +90,7 @@ WithError.args = {
     { label: 'Option 4', value: 4 },
     { label: 'Option 5', value: 5 }
   ],
-  errorMessage: 'Veuillez selectionner une option'
+  error: 'Veuillez selectionner une option'
 }
 
 export const Compact = Template.bind({})

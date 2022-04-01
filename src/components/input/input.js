@@ -1,5 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import * as Icons from '../icons'
 import css from './input.module.css'
 
 const Input = ({
@@ -8,7 +9,8 @@ const Input = ({
   label,
   placeholder,
   className,
-  errorMessage,
+  valid,
+  error,
   compact,
   value,
   autoFocus,
@@ -25,8 +27,13 @@ const Input = ({
   const classes = classnames(css.input, {
     [css.compact]: compact,
     [css[type]]: type,
-    [className]: className
+    [className]: className,
+    [css.valid]: valid,
+    [css.error]: error
   })
+
+  const ValidationIcon = Icons[error ? 'AlertTriangle' : 'Check']
+  const showErrorMessage = error && typeof error === 'string'
 
   return (
     <div className={classes}>
@@ -46,9 +53,14 @@ const Input = ({
             readOnly={readOnly}
             {...inputProps}
           />
+          {(error || valid) && (
+            <div className={css.validationIndicator}>
+              <ValidationIcon className={css.validationIndicatorIcon} />
+            </div>
+          )}
         </div>
       </label>
-      {errorMessage && <div className={css.error}>{errorMessage}</div>}
+      {showErrorMessage && <div className={css.errorMessage}>{error}</div>}
     </div>
   )
 }

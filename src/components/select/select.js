@@ -1,5 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import * as Icons from '../icons'
 import css from '../input/input.module.css'
 
 const Select = ({
@@ -7,7 +8,8 @@ const Select = ({
   label,
   options = [],
   className,
-  errorMessage,
+  valid,
+  error,
   compact,
   value,
   autoFocus,
@@ -23,8 +25,13 @@ const Select = ({
 
   const classes = classnames(css.select, {
     [css.compact]: compact,
-    [className]: className
+    [className]: className,
+    [css.valid]: valid,
+    [css.error]: error
   })
+
+  const ValidationIcon = Icons[error ? 'AlertTriangle' : 'Check']
+  const showErrorMessage = error && typeof error === 'string'
 
   return (
     <div className={classes}>
@@ -49,10 +56,15 @@ const Select = ({
                 </option>
               ))}
             </select>
+            {(error || valid) && (
+              <div className={css.validationIndicator}>
+                <ValidationIcon className={css.validationIndicatorIcon} />
+              </div>
+            )}
           </div>
         </div>
       </label>
-      {errorMessage && <div className={css.error}>{errorMessage}</div>}
+      {showErrorMessage && <div className={css.errorMessage}>{error}</div>}
     </div>
   )
 }

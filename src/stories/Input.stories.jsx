@@ -22,10 +22,15 @@ export default {
       control: 'select',
       options: ['text', 'date', 'email', 'phone']
     },
-    errorMessage: {
-      name: 'errorMessage',
+    error: {
+      name: 'error',
       control: 'text',
-      description: "`string` - Message d'erreur affiché en rouge sous le champ"
+      description: "`boolean | string` - Message d'erreur affiché en rouge sous le champ"
+    },
+    valid: {
+      name: 'valid',
+      control: 'boolean',
+      description: '`boolean` - Champ valid'
     },
     compact: {
       name: 'compact',
@@ -68,6 +73,14 @@ Basic.args = {
   placeholder: 'John Smith'
 }
 
+export const Valid = Template.bind({})
+Valid.args = {
+  type: 'text',
+  label: 'Nom complet',
+  placeholder: 'John Smith',
+  valid: true
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   type: 'text',
@@ -94,7 +107,7 @@ EmailWithError.args = {
   label: 'Adresse email',
   type: 'email',
   value: 'john-smith.com',
-  errorMessage: "Format d'adresse email invalide"
+  error: "Format d'adresse email invalide"
 }
 
 export const WithDecoration = Template.bind({})

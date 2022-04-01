@@ -18,6 +18,8 @@
 .inner {
   flex: 1 1 100%;
   position: relative;
+  display: flex;
+  align-items: center;
   border-radius: var(--ds-input-radius, var(--ds-radius-100, 3px));
   z-index: 0;
 }
@@ -119,7 +121,38 @@
   padding: var(--ds-input-compact-padding, 5px);
 }
 
-.error {
+.validationIndicator {
+  position: relative;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  animation: input-validation-indicator-appearance 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+@keyframes input-validation-indicator-appearance {
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+.validationIndicatorIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.valid .validationIndicatorIcon {
+  fill: var(--ds-green, #4bde97);
+}
+
+.error .validationIndicatorIcon {
+  fill: var(--ds-red, #f26464);
+}
+
+.errorMessage {
   padding: 0 3px;
   color: var(--ds-red, #f26464);
   font-style: italic;
