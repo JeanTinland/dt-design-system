@@ -87,6 +87,15 @@ WithError.args = {
   error: 'Votre message est trop long'
 }
 
+export const Valid = Template.bind({})
+Valid.args = {
+  label: 'Votre message',
+  value:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, felis a ullamcorper accumsan, nibh ligula tincidunt justo, quis iaculis libero nisl in leo.',
+  autoSizing: true,
+  valid: true
+}
+
 export const Compact = Template.bind({})
 Compact.args = {
   label: 'Message',
