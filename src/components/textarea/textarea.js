@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import css from '../input/input.module.css'
 
 const TextArea = ({
-  fieldRef,
+  inputRef,
   type = 'text',
   label,
   placeholder,
@@ -15,7 +15,7 @@ const TextArea = ({
   autoSizing,
   disabled,
   readOnly,
-  fieldProps = {}
+  inputProps = {}
 }) => {
   const innerRef = React.useRef()
 
@@ -50,7 +50,7 @@ const TextArea = ({
         {label && <span className={css.labelText}>{label}</span>}
         <div ref={innerRef} className={css.inner}>
           <textarea
-            ref={fieldRef}
+            ref={inputRef}
             type={type}
             className={css.field}
             value={value}
@@ -60,7 +60,7 @@ const TextArea = ({
             placeholder={placeholder}
             disabled={disabled}
             readOnly={readOnly}
-            {...fieldProps}
+            {...inputProps}
           />
         </div>
       </label>

@@ -1,6 +1,6 @@
 {
   "name": "dt-design-system",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "peerDependencies": {
     "classnames": "^2.3.1",
     "react": "^17.0.2",
@@ -48,8 +48,10 @@
   "files": [
     "dist",
     "button.js",
+    "checkbox.js",
     "icons.js",
     "input.js",
+    "number-picker.js",
     "select.js",
     "textarea.js"
   ],

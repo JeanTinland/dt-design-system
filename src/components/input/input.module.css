@@ -10,7 +10,7 @@
 
 .labelText {
   padding: 0 3px;
-  font-size: 12px;
+  font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;
   user-select: none;
 }

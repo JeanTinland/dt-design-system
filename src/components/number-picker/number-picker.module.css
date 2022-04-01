@@ -1,0 +1,36 @@
+.picker {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: var(--ds-label-font-size, 12px);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.value {
+  min-width: 18px;
+  font-size: var(--ds-number-picker-font-size, 14px);
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+}
+
+.picker.active .value {
+  color: var(--ds-number-picker-foreground, var(--ds-grey-600, #2d303c));
+  font-weight: 700;
+}
+
+.picker.disabled .value {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

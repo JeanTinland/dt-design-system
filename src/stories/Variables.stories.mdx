@@ -35,6 +35,8 @@ import { Meta } from '@storybook/addon-docs'
   --ds-sans-serif-font: 'Open Sans', inherit, sans-serif;
   --ds-mono-font: 'JetBrains Mono', monospace;
 
+  --ds-label-font-size: 12px;
+
   --ds-radius-100: 3px;
   --ds-radius-200: 10px;
   --ds-radius-300: 15px;
@@ -46,7 +48,7 @@ import { Meta } from '@storybook/addon-docs'
 
 ## Spécifiques à certains composants
 
-### Input, Select, Textarea
+### Input, Select, Textarea, Checkbox
 
 ```css
 :root {
@@ -77,5 +79,23 @@ import { Meta } from '@storybook/addon-docs'
   --ds-button-border: 0;
   --ds-button-radius: var(--ds-radius-100, 3px);
   --ds-button-shadow: 0;
+}
+```
+
+### NumberPicker
+
+```css
+:root {
+  --ds-number-picker-font-size: 14px;
+  --ds-number-picker-foreground: var(--ds-grey-600, #2d303c);
+}
+```
+
+### Checkbox
+
+```css
+:root {
+  --ds-checkbox-label-foreground: var(--ds-grey-600, #2d303c);
+  --ds-checkbox-foreground: var(--ds-blue-400, #4177f6);
 }
 ```

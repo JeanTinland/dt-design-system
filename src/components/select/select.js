@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import css from '../input/input.module.css'
 
 const Select = ({
-  fieldRef,
+  inputRef,
   label,
   options = [],
   className,
@@ -15,7 +15,7 @@ const Select = ({
   disabled,
   readOnly,
   onChange,
-  fieldProps = {}
+  inputProps = {}
 }) => {
   const _onChange = (e) => {
     onChange?.(e.target.value)
@@ -33,7 +33,7 @@ const Select = ({
         <div className={css.outer}>
           <div className={css.inner}>
             <select
-              ref={fieldRef}
+              ref={inputRef}
               className={css.field}
               value={value}
               onChange={_onChange}
@@ -41,7 +41,7 @@ const Select = ({
               required={required}
               disabled={disabled}
               readOnly={readOnly}
-              {...fieldProps}
+              {...inputProps}
             >
               {options.map((option) => (
                 <option key={option?.value ?? option} value={option?.value ?? option}>

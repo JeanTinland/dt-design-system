@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import css from './input.module.css'
 
 const Input = ({
-  fieldRef,
+  inputRef,
   type = 'text',
   label,
   placeholder,
@@ -16,7 +16,7 @@ const Input = ({
   disabled,
   readOnly,
   onChange,
-  fieldProps = {}
+  inputProps = {}
 }) => {
   const _onChange = (e) => {
     onChange?.(e.target.value)
@@ -34,7 +34,7 @@ const Input = ({
         {label && <span className={css.labelText}>{label}</span>}
         <div className={css.inner}>
           <input
-            ref={fieldRef}
+            ref={inputRef}
             type={type}
             className={css.field}
             value={value}
@@ -44,7 +44,7 @@ const Input = ({
             required={required}
             disabled={disabled}
             readOnly={readOnly}
-            {...fieldProps}
+            {...inputProps}
           />
         </div>
       </label>

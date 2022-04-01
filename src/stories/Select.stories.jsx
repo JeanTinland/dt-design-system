@@ -7,8 +7,8 @@ export default {
   component: Select,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    fieldRef: {
-      name: 'fieldRef',
+    inputRef: {
+      name: 'inputRef',
       description: 'Référence React : React.useRef()'
     },
     label: {
@@ -47,9 +47,9 @@ export default {
       description: '`boolean` - Le champ est en lecture seule (non éditable)',
       control: 'boolean'
     },
-    fieldProps: {
-      name: 'fieldProps',
-      description: '`object` - Cette propriété permet de passer/surcharger les propriétés du champs'
+    inputProps: {
+      name: 'inputProps',
+      description: '`object` - Cette propriété permet de passer/surcharger les propriétés du champ'
     }
   }
 }
