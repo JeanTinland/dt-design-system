@@ -28,6 +28,9 @@ import { Meta } from '@storybook/addon-docs'
   --ds-blue-400: #4177f6;
   --ds-blue-500: #004cc2;
 
+  --ds-primary: var(--ds-blue-500, #004cc2);
+  --ds-secondary: var(--ds-blue-400, #4177f6);
+
   --ds-focus-ring-color: var(--ds-blue-400, #4177f6);
   --ds-focus-ring-width: 2px;
   --ds-focus-ring-offset: 2px;
@@ -81,8 +84,8 @@ import { Meta } from '@storybook/addon-docs'
   --ds-button-compact-padding: 5px;
   --ds-button-font-size: 14px;
   --ds-button-foreground: var(--ds-grey-000, #fff);
-  --ds-button-background: var(--ds-blue-400, #4177f6);
-  --ds-button-hover-background: var(--ds-blue-500, #004cc2);
+  --ds-button-background: var(--ds-secondary, var(--ds-blue-400, #4177f6));
+  --ds-button-hover-background: var(--ds-primary, var(--ds-blue-500, #004cc2));
   --ds-button-border: 0;
   --ds-button-radius: var(--ds-radius-100, 3px);
   --ds-button-shadow: 0;
