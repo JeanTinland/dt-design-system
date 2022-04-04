@@ -9,7 +9,7 @@
 }
 
 .labelText {
-  padding: 0 calc(28px + var(--ds-radius-100, 3px) * 3) 0 3px;
+  padding: 0 calc(34px + var(--ds-radius-100, 3px)) 0 3px;
   color: var(--ds-grey-500, #484848);
   font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;
@@ -125,7 +125,7 @@
 .validationIndicator {
   position: absolute;
   bottom: 100%;
-  right: calc(var(--ds-radius-100, 3px) * 2);
+  right: var(--ds-radius-100, 3px);
   width: 28px;
   height: 24px;
   display: flex;
