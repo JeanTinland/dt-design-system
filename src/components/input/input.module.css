@@ -9,7 +9,8 @@
 }
 
 .labelText {
-  padding: 0 3px;
+  padding: 0 calc(28px + var(--ds-radius-100, 3px) * 3) 0 3px;
+  color: var(--ds-grey-500, #484848);
   font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;
   user-select: none;
@@ -122,26 +123,29 @@
 }
 
 .validationIndicator {
-  position: relative;
-  flex: 0 0 40px;
-  width: 40px;
-  height: 100%;
+  position: absolute;
+  bottom: 100%;
+  right: calc(var(--ds-radius-100, 3px) * 2);
+  width: 28px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  background-color: var(--ds-input-background, var(--ds-grey-100, #f5f5f5));
+  border-radius: var(--ds-radius-100, 3px) var(--ds-radius-100, 3px) 0 0;
   animation: input-validation-indicator-appearance 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 @keyframes input-validation-indicator-appearance {
-  50% {
-    transform: scale(1.4);
+  0% {
+    transform: translateY(100%);
+    z-index: -1;
   }
 }
 
 .validationIndicatorIcon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .valid .validationIndicatorIcon {
