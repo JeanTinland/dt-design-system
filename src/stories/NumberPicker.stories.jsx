@@ -50,6 +50,15 @@ Basic.args = {
   value: 13
 }
 
+export const WithInput = Template.bind({})
+WithInput.args = {
+  label: 'Nombre de personnes',
+  min: 0,
+  max: 20,
+  value: 13,
+  withInput: true
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   label: 'Nombre de personnes',

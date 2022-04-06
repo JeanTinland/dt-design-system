@@ -78,6 +78,7 @@ Valid.args = {
   type: 'text',
   label: 'Nom complet',
   placeholder: 'John Smith',
+  value: 'John Smith',
   valid: true
 }
 

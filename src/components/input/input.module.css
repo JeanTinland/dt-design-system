@@ -5,15 +5,22 @@
   display: flex;
   flex-direction: column;
   font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
-  gap: 3px;
+  gap: 5px;
 }
 
 .labelText {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
   padding: 0 calc(34px + var(--ds-radius-100, 3px)) 0 3px;
   color: var(--ds-grey-500, #484848);
   font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;
   user-select: none;
+}
+
+.error .labelText {
+  color: var(--ds-red, #f26464);
 }
 
 .inner {
@@ -70,7 +77,7 @@
 }
 
 .field::placeholder {
-  font-style: italic;
+  opacity: 0.65;
 }
 
 .field:read-only {
@@ -122,41 +129,41 @@
   padding: var(--ds-input-compact-padding, 5px);
 }
 
-.validationIndicator {
-  position: absolute;
-  bottom: 100%;
-  right: var(--ds-radius-100, 3px);
-  width: 28px;
-  height: 24px;
+.validIndicator,
+.errorIndicator {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--ds-input-background, var(--ds-grey-100, #f5f5f5));
-  border-radius: var(--ds-radius-100, 3px) var(--ds-radius-100, 3px) 0 0;
   animation: input-validation-indicator-appearance 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 @keyframes input-validation-indicator-appearance {
-  0% {
-    transform: translateY(100%);
-    z-index: -1;
+  50% {
+    transform: scale(1.1);
   }
 }
 
-.validationIndicatorIcon {
-  width: 16px;
-  height: 16px;
+.validIndicatorIcon,
+.errorIndicatorIcon {
+  width: 100%;
+  height: 100%;
 }
 
-.valid .validationIndicatorIcon {
+.validIndicatorIcon {
   fill: var(--ds-green, #4bde97);
 }
 
-.error .validationIndicatorIcon {
+.errorIndicatorIcon {
   fill: var(--ds-red, #f26464);
 }
 
 .errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
   padding: 0 3px;
   color: var(--ds-red, #f26464);
   font-style: italic;

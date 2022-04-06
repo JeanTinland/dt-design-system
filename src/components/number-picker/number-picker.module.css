@@ -12,9 +12,30 @@
 }
 
 .inner {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
+  z-index: 0;
+}
+
+.withInput .inner {
+  --ds-input-radius: 0;
+  align-items: stretch;
+  gap: 0;
+}
+
+.withInput .inner button {
+  position: relative;
+  z-index: 1;
+}
+
+.withInput .inner button:first-child {
+  --ds-button-radius: var(--ds-radius-100, 3px) 0 0 var(--ds-radius-100, 3px);
+}
+
+.withInput .inner button:last-child {
+  --ds-button-radius: 0 var(--ds-radius-100, 3px) var(--ds-radius-100, 3px) 0;
 }
 
 .value {
@@ -26,8 +47,11 @@
 }
 
 .picker.active .value {
+  position: relative;
   color: var(--ds-number-picker-foreground, var(--ds-grey-600, #2d303c));
   font-weight: 700;
+  text-align: center;
+  z-index: 0;
 }
 
 .picker.disabled .value {

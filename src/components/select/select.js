@@ -5,7 +5,7 @@ import css from '../input/input.module.css'
 
 const Select = ({
   inputRef,
-  label,
+  label = ' ',
   options = [],
   className,
   valid,
@@ -30,13 +30,19 @@ const Select = ({
     [css.error]: error
   })
 
-  const ValidationIcon = Icons[error ? 'AlertTriangle' : 'Check']
-  const showErrorMessage = error && typeof error === 'string'
-
   return (
     <div className={classes}>
       <label className={css.label}>
-        {label && <span className={css.labelText}>{label}</span>}
+        {(label || valid) && (
+          <span className={css.labelText}>
+            {label}
+            {valid && (
+              <div className={css.validIndicator}>
+                <Icons.Check className={css.validIndicatorIcon} />
+              </div>
+            )}
+          </span>
+        )}
         <div className={css.outer}>
           <div className={css.inner}>
             <select
@@ -56,15 +62,17 @@ const Select = ({
                 </option>
               ))}
             </select>
-            {(error || valid) && (
-              <div className={css.validationIndicator}>
-                <ValidationIcon className={css.validationIndicatorIcon} />
-              </div>
-            )}
           </div>
         </div>
       </label>
-      {showErrorMessage && <div className={css.errorMessage}>{error}</div>}
+      {error && (
+        <div className={css.errorMessage}>
+          <div className={css.errorIndicator}>
+            <Icons.XCircle className={css.errorIndicatorIcon} />
+          </div>
+          {error}
+        </div>
+      )}
     </div>
   )
 }

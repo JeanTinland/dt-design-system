@@ -6,7 +6,7 @@ import css from './input.module.css'
 const Input = ({
   inputRef,
   type = 'text',
-  label,
+  label = '',
   placeholder,
   className,
   valid,
@@ -31,13 +31,19 @@ const Input = ({
     [css.error]: error
   })
 
-  const ValidationIcon = Icons[error ? 'AlertTriangle' : 'Check']
-  const showErrorMessage = error && typeof error === 'string'
-
   return (
     <div className={classes}>
       <label className={css.label}>
-        {label && <span className={css.labelText}>{label}</span>}
+        {(label || valid) && (
+          <span className={css.labelText}>
+            {label}
+            {valid && (
+              <div className={css.validIndicator}>
+                <Icons.Check className={css.validIndicatorIcon} />
+              </div>
+            )}
+          </span>
+        )}
         <div className={css.inner}>
           <input
             ref={inputRef}
@@ -52,14 +58,16 @@ const Input = ({
             readOnly={readOnly}
             {...inputProps}
           />
-          {(error || valid) && (
-            <div className={css.validationIndicator}>
-              <ValidationIcon className={css.validationIndicatorIcon} />
-            </div>
-          )}
         </div>
       </label>
-      {showErrorMessage && <div className={css.errorMessage}>{error}</div>}
+      {error && (
+        <div className={css.errorMessage}>
+          <div className={css.errorIndicator}>
+            <Icons.XCircle className={css.errorIndicatorIcon} />
+          </div>
+          {error}
+        </div>
+      )}
     </div>
   )
 }
