@@ -38,6 +38,10 @@
   --ds-button-radius: 0 var(--ds-radius-100, 3px) var(--ds-radius-100, 3px) 0;
 }
 
+.withInput input {
+  text-align: center;
+}
+
 .value {
   min-width: 18px;
   font-size: var(--ds-number-picker-font-size, 14px);
