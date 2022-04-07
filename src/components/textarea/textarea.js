@@ -40,7 +40,9 @@ const TextArea = ({
     field.style.height = `${height}px`
   }, [autoSizing])
 
-  React.useEffect(updateTextAreaHeight, [updateTextAreaHeight])
+  React.useEffect(() => {
+    updateTextAreaHeight()
+  }, [updateTextAreaHeight])
 
   const isValid = valid && !error
 
@@ -59,11 +61,7 @@ const TextArea = ({
         {(label || isValid) && (
           <span className={css.labelText}>
             {label}
-            {isValid && (
-              <div className={css.validIndicator}>
-                <Icons.Check className={css.validIndicatorIcon} />
-              </div>
-            )}
+            {isValid && <Icons.Check className={css.validIndicator} />}
           </span>
         )}
         <div ref={innerRef} className={css.inner}>
@@ -88,9 +86,7 @@ const TextArea = ({
       </label>
       {error && (
         <div className={css.errorMessage} role="alert">
-          <div className={css.errorIndicator}>
-            <Icons.XCircle className={css.errorIndicatorIcon} />
-          </div>
+          <Icons.XCircle className={css.errorIndicator} />
           {error}
         </div>
       )}

@@ -45,7 +45,7 @@ const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabl
   })
 
   const valueLength = value.toString().length
-  const inputSize = valueLength < 3 ? 3 : valueLength + 1
+  const inputSize = valueLength < 2 ? 2 : valueLength
 
   return (
     <div className={classes}>

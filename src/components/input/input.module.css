@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   gap: 1ch;
-  padding: 0 calc(34px + var(--ds-radius-100, 3px)) 0 3px;
+  padding: 0 3px;
   color: var(--ds-grey-500, #484848);
   font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;
@@ -142,21 +142,15 @@
 
 @keyframes input-validation-indicator-appearance {
   50% {
-    transform: scale(1.1);
+    transform: scale(1.4);
   }
 }
 
-.validIndicatorIcon,
-.errorIndicatorIcon {
-  width: 100%;
-  height: 100%;
-}
-
-.validIndicatorIcon {
+.validIndicator {
   fill: var(--ds-green, #4bde97);
 }
 
-.errorIndicatorIcon {
+.errorIndicator {
   fill: var(--ds-red, #f26464);
 }
 

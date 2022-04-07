@@ -40,11 +40,7 @@ const Input = ({
         {(label || (isValid && !error)) && (
           <span className={css.labelText}>
             {label}
-            {isValid && !error && (
-              <div className={css.validIndicator}>
-                <Icons.Check className={css.validIndicatorIcon} />
-              </div>
-            )}
+            {isValid && !error && <Icons.Check className={css.validIndicator} />}
           </span>
         )}
         <div className={css.inner}>
@@ -67,9 +63,7 @@ const Input = ({
       </label>
       {error && (
         <div className={css.errorMessage} role="alert">
-          <div className={css.errorIndicator}>
-            <Icons.XCircle className={css.errorIndicatorIcon} />
-          </div>
+          <Icons.XCircle className={css.errorIndicator} />
           {error}
         </div>
       )}
