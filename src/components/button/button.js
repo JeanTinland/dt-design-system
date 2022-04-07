@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import css from './button.module.css'
 
 const Button = React.forwardRef(
-  ({ type = 'button', className, StartIcon, EndIcon, compact, children, disabled, ...props }, ref) => {
+  ({ type = 'button', className, StartIcon, EndIcon, compact, children, ...props }, ref) => {
     const classes = classnames(css.button, {
       [className]: className,
       [css.compact]: compact,
@@ -11,7 +11,7 @@ const Button = React.forwardRef(
     })
 
     return (
-      <button ref={ref} type={type} className={classes} disabled={disabled} aria-disabled={disabled} {...props}>
+      <button ref={ref} type={type} className={classes} {...props}>
         {StartIcon && <StartIcon className={css.icon} />}
         {children}
         {EndIcon && <EndIcon className={css.icon} />}

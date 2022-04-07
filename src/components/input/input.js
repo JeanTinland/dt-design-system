@@ -60,10 +60,7 @@ const Input = ({
             autoFocus={autoFocus}
             disabled={disabled}
             readOnly={readOnly}
-            aria-required={!!required}
             aria-invalid={!isValid}
-            aria-disabled={disabled}
-            aria-readonly={readOnly}
             {...inputProps}
           />
         </div>
