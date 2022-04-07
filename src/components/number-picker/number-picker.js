@@ -44,8 +44,8 @@ const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabl
     [css.withInput]: withInput
   })
 
-  const valueSize = value.toString().length
-  const inputSize = valueSize < 2 ? 2 : valueSize
+  const valueLength = value.toString().length
+  const inputSize = valueLength < 3 ? 3 : valueLength + 1
 
   return (
     <div className={classes}>
@@ -55,6 +55,7 @@ const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabl
           onClick={subtract(value, min, max, onChange)}
           StartIcon={Icons.Minus}
           disabled={isBelow(value, min, disabled)}
+          aria-label="Minus"
           compact
         />
         {withInput ? (
@@ -73,6 +74,7 @@ const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabl
           onClick={add(value, min, max, onChange)}
           StartIcon={Icons.Plus}
           disabled={isAbove(value, max, disabled)}
+          aria-label="Plus"
           compact
         />
       </div>

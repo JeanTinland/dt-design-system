@@ -7,6 +7,7 @@ const Input = ({
   inputRef,
   type = 'text',
   label = '',
+  name,
   placeholder,
   className,
   valid,
@@ -24,20 +25,22 @@ const Input = ({
     onChange?.(e.target.value)
   }
 
+  const isValid = valid && !error
+
   const classes = classnames(css.input, {
     [css.compact]: compact,
     [className]: className,
-    [css.valid]: valid,
+    [css.valid]: isValid,
     [css.error]: error
   })
 
   return (
     <div className={classes}>
       <label className={css.label}>
-        {(label || valid) && (
+        {(label || (isValid && !error)) && (
           <span className={css.labelText}>
             {label}
-            {valid && (
+            {isValid && !error && (
               <div className={css.validIndicator}>
                 <Icons.Check className={css.validIndicatorIcon} />
               </div>
@@ -48,20 +51,25 @@ const Input = ({
           <input
             ref={inputRef}
             type={type}
+            name={name}
             className={css.field}
             value={value}
             onChange={_onChange}
-            autoFocus={autoFocus}
             placeholder={placeholder}
             required={required}
+            autoFocus={autoFocus}
             disabled={disabled}
             readOnly={readOnly}
+            aria-required={!!required}
+            aria-invalid={!isValid}
+            aria-disabled={disabled}
+            aria-readonly={readOnly}
             {...inputProps}
           />
         </div>
       </label>
       {error && (
-        <div className={css.errorMessage}>
+        <div className={css.errorMessage} role="alert">
           <div className={css.errorIndicator}>
             <Icons.XCircle className={css.errorIndicatorIcon} />
           </div>

@@ -20,6 +20,8 @@ const Checkbox = ({ label, onChange, value, disabled, required, inputProps }) =>
         checked={value}
         disabled={disabled}
         required={required}
+        aria-checked={value}
+        aria-disabled={disabled}
         {...inputProps}
       />
       <span className={css.checkmark} />

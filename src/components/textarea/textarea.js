@@ -6,7 +6,8 @@ import css from '../input/input.module.css'
 const TextArea = ({
   inputRef,
   type = 'text',
-  label = ' ',
+  label = '',
+  name,
   placeholder,
   className,
   valid,
@@ -14,6 +15,8 @@ const TextArea = ({
   compact,
   value,
   onChange,
+  autoFocus,
+  required,
   autoSizing,
   disabled,
   readOnly,
@@ -39,22 +42,24 @@ const TextArea = ({
 
   React.useEffect(updateTextAreaHeight, [updateTextAreaHeight])
 
+  const isValid = valid && !error
+
   const classes = classnames(css.textarea, {
     [css.compact]: compact,
     [css[type]]: type,
     [css.autoSizing]: autoSizing,
     [className]: className,
-    [css.valid]: valid,
+    [css.valid]: isValid,
     [css.error]: error
   })
 
   return (
     <div className={classes}>
       <label className={css.label}>
-        {(label || valid) && (
+        {(label || isValid) && (
           <span className={css.labelText}>
             {label}
-            {valid && (
+            {isValid && (
               <div className={css.validIndicator}>
                 <Icons.Check className={css.validIndicatorIcon} />
               </div>
@@ -65,20 +70,27 @@ const TextArea = ({
           <textarea
             ref={inputRef}
             type={type}
+            name={name}
             className={css.field}
             value={value}
             onChange={_onChange}
             onInput={updateTextAreaHeight}
             onFocus={updateTextAreaHeight}
             placeholder={placeholder}
+            required={required}
+            autoFocus={autoFocus}
             disabled={disabled}
             readOnly={readOnly}
+            aria-required={!!required}
+            aria-invalid={!isValid}
+            aria-disabled={disabled}
+            aria-readonly={readOnly}
             {...inputProps}
           />
         </div>
       </label>
       {error && (
-        <div className={css.errorMessage}>
+        <div className={css.errorMessage} role="alert">
           <div className={css.errorIndicator}>
             <Icons.XCircle className={css.errorIndicatorIcon} />
           </div>

@@ -21,6 +21,8 @@
 
 .withInput .inner {
   --ds-input-radius: 0;
+  --ds-input-compact-padding: 3px 5px;
+
   align-items: stretch;
   gap: 0;
 }
