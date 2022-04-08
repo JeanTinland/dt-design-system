@@ -23,13 +23,14 @@ const MultipleSelect = ({
   defaultOpened = false,
   onOpen
 }) => {
+  const ref = React.useRef()
   const [opened, setOpened] = React.useState(defaultOpened)
   const isValid = valid && !error
 
   const closeOnOutsideClick = React.useCallback(
     (e) => {
       const target = e.target.closest(`.${css.select}`)
-      if (target) return
+      if (target === ref.current) return
       setOpened(false)
     },
     [setOpened]
@@ -71,7 +72,7 @@ const MultipleSelect = ({
   })
 
   return (
-    <div className={classes}>
+    <div ref={ref} className={classes}>
       <label className={cssInput.label}>
         {(label || isValid) && (
           <span className={cssInput.labelText}>
