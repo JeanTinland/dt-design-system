@@ -16,6 +16,11 @@ export default {
       description: '`string` - Label apparaissant au dessus du champ',
       control: 'text'
     },
+    valueLabel: {
+      name: 'valueLabel',
+      description: '`string` - Label apparaissant dans le champ',
+      control: 'text'
+    },
     options: {
       name: 'options',
       description: '`{label, value}[] | string[]` - Options du select',
@@ -46,15 +51,6 @@ export default {
       name: 'disabled',
       description: '`boolean` - Le champ est désactivé (non éditable)',
       control: 'boolean'
-    },
-    readOnly: {
-      name: 'readOnly',
-      description: '`boolean` - Le champ est en lecture seule (non éditable)',
-      control: 'boolean'
-    },
-    inputProps: {
-      name: 'inputProps',
-      description: '`object` - Cette propriété permet de passer/surcharger les propriétés du champ'
     }
   }
 }
@@ -63,12 +59,12 @@ export default {
 const Template = (args) => {
   const [values, setValues] = React.useState(args.values ?? [])
 
-  const placeholder =
-    values.length > 1 ? `${values.length} options` : values.length === 1 ? values[0].label : args.placeholder
+  const valueLabel =
+    values.length > 1 ? `${values.length} options` : values.length === 1 ? values[0].label : args.valueLabel
 
   return (
     <div className="demo-container">
-      <MultipleSelect {...args} values={values} onChange={setValues} placeholder={placeholder} />
+      <MultipleSelect {...args} values={values} onChange={setValues} valueLabel={valueLabel} />
     </div>
   )
 }
@@ -76,7 +72,7 @@ const Template = (args) => {
 export const Basic = Template.bind({})
 Basic.args = {
   label: 'Les options',
-  placeholder: 'Selectionnez une option',
+  valueLabel: 'Selectionnez une option',
   options: [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },
@@ -94,7 +90,7 @@ Basic.args = {
 export const WithError = Template.bind({})
 WithError.args = {
   label: 'Les options',
-  placeholder: 'Selectionnez une option',
+  valueLabel: 'Selectionnez une option',
   options: [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },
@@ -113,7 +109,7 @@ WithError.args = {
 export const Valid = Template.bind({})
 Valid.args = {
   label: 'Les options',
-  placeholder: 'Selectionnez une option',
+  valueLabel: 'Selectionnez une option',
   options: [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },
@@ -136,7 +132,7 @@ Valid.args = {
 export const Compact = Template.bind({})
 Compact.args = {
   label: 'Les options',
-  placeholder: 'Selectionnez une option',
+  valueLabel: 'Selectionnez une option',
   options: [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },

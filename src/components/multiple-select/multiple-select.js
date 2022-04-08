@@ -10,7 +10,7 @@ const MultipleSelect = ({
   label = '',
   name,
   options = [],
-  placeholder,
+  valueLabel,
   className,
   valid,
   error,
@@ -21,8 +21,7 @@ const MultipleSelect = ({
   disabled,
   onChange,
   defaultOpened = false,
-  onOpen,
-  inputProps = {}
+  onOpen
 }) => {
   const [opened, setOpened] = React.useState(defaultOpened)
   const isValid = valid && !error
@@ -90,10 +89,9 @@ const MultipleSelect = ({
               required={required}
               autoFocus={autoFocus}
               disabled={disabled}
-              value={placeholder}
+              value={valueLabel}
               readOnly
               aria-invalid={!isValid}
-              {...inputProps}
               onClick={toggleDropdown}
             />
           </div>
