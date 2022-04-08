@@ -79,9 +79,5 @@
 }
 
 .optionSelected {
-  background-color: var(--ds-primary, var(--ds-blue-500, #004cc2));
-}
-
-.optionSelected > div {
-  color: var(--ds-grey-000, #fff);
+  background-color: var(--ds-grey-200, #efefef);
 }
