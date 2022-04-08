@@ -2,13 +2,14 @@ import * as React from 'react'
 import classnames from 'classnames'
 import css from './checkbox.module.css'
 
-const Checkbox = ({ label, onChange, value, disabled, required, inputProps }) => {
+const Checkbox = ({ label, className, onChange, value, disabled, required, inputProps }) => {
   const _onChange = (e) => {
     onChange?.(e.target.checked)
   }
 
   const classes = classnames(css.field, {
-    [css.disabled]: disabled
+    [css.disabled]: disabled,
+    [className]: className
   })
 
   return (

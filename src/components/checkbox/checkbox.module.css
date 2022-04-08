@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   cursor: pointer;
   transition: color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
@@ -13,6 +12,7 @@
 }
 
 .label {
+  flex: 1 1 100%;
   color: var(--ds-checkbox-label-foreground, var(--ds-grey-600, #2d303c));
   font-size: var(--ds-label-font-size, 12px);
   text-transform: uppercase;

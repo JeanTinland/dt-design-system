@@ -1,3 +1,1 @@
-import Textarea from './textarea'
-
-export default Textarea
+export { default } from './textarea'
