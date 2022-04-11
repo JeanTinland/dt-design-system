@@ -112,9 +112,17 @@ const MultipleSelect = ({
               [css.optionSelected]: isSelected
             })
 
+            const inputProps = { tabIndex: opened ? 0 : -1 }
+
             return (
               <div key={value} role="listitem">
-                <Checkbox className={classes} label={label} value={isSelected} onChange={_onChange(option)} />
+                <Checkbox
+                  className={classes}
+                  label={label}
+                  value={isSelected}
+                  onChange={_onChange(option)}
+                  inputProps={inputProps}
+                />
               </div>
             )
           })}

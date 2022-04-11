@@ -32,11 +32,11 @@
   z-index: 1;
 }
 
-.withInput .inner button:first-child {
+.withInput .inner button:first-of-type {
   --ds-button-radius: var(--ds-radius-100, 3px) 0 0 var(--ds-radius-100, 3px);
 }
 
-.withInput .inner button:last-child {
+.withInput .inner button:last-of-type {
   --ds-button-radius: 0 var(--ds-radius-100, 3px) var(--ds-radius-100, 3px) 0;
 }
 
