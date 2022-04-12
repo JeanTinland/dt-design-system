@@ -21,7 +21,7 @@ const Select = ({
   inputProps = {}
 }) => {
   const _onChange = (e) => {
-    onChange?.(e.target.value)
+    onChange?.(e.target.value, e)
   }
 
   const isValid = valid && !error

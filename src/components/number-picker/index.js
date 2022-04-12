@@ -1,3 +1,1 @@
-import NumberPicker from './number-picker'
-
-export default NumberPicker
+export { default } from './number-picker'

@@ -25,7 +25,7 @@ const TextArea = ({
   const innerRef = React.useRef()
 
   const _onChange = (e) => {
-    onChange?.(e.target.value)
+    onChange?.(e.target.value, e)
   }
 
   const updateTextAreaHeight = React.useCallback(() => {

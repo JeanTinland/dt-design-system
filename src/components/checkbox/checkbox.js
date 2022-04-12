@@ -4,7 +4,7 @@ import css from './checkbox.module.css'
 
 const Checkbox = ({ label, className, onChange, value, disabled, required, inputProps }) => {
   const _onChange = (e) => {
-    onChange?.(e.target.checked)
+    onChange?.(e.target.checked, e)
   }
 
   const classes = classnames(css.field, {
