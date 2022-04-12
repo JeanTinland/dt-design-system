@@ -11,6 +11,8 @@
   background-color: var(--ds-button-background, var(--ds-blue-400, #4177f6));
   font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
   text-transform: var(--ds-button-text-transform, uppercase);
+  letter-spacing: var(--ds-button-letter-spacing, normal);
+  line-height: var(--ds-button-line-height, 1);
   font-weight: var(--ds-button-font-weight, 700);
   border: var(--ds-button-border, 0);
   border-radius: var(--ds-button-radius, var(--ds-radius-100, 3px));
