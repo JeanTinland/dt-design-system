@@ -104,9 +104,10 @@ const MultipleSelect = ({
             const label = option?.label ?? option
             const value = option?.value ?? option
 
-            const isSelected = values.find((o) => {
-              return o === value || o.value === value
-            })
+            const isSelected =
+              values.find((o) => {
+                return o === value || o.value === value
+              }) ?? false
 
             const classes = classnames(css.option, {
               [css.optionSelected]: isSelected
