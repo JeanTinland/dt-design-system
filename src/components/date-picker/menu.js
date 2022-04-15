@@ -72,9 +72,9 @@ const Menu = ({ lang, toggleMenu, year, currentYear, selectedMonth, minDate, max
             const index = i + 1
 
             const updateSelectedYearAndMonth = () => {
+              toggleMenu()
               setYear(selectedYear)
               setMonth(index)
-              toggleMenu()
             }
 
             const isInCurrentYear = year === selectedYear

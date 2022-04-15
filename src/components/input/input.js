@@ -21,11 +21,8 @@ const Input = ({
   disabled,
   readOnly,
   onChange,
-  min,
-  max,
   inputProps = {}
 }) => {
-  const ref = React.useRef()
   const [datePickerVisible, setDatePickerVisible] = React.useState(false)
 
   const isDate = type === 'date'
@@ -48,30 +45,14 @@ const Input = ({
     [css.error]: error
   })
 
-  const closeOnOutsideClick = React.useCallback(
-    (e) => {
-      const target = e.target.closest(`.${css.input}`)
-      if (target === ref.current) return
-      setDatePickerVisible(false)
-    },
-    [setDatePickerVisible]
-  )
-
   const toggleDatePicker = () => {
     if (isDate) {
       setDatePickerVisible(!datePickerVisible)
     }
   }
 
-  React.useEffect(() => {
-    if (isDate) {
-      document.body.addEventListener('click', closeOnOutsideClick)
-      return () => document.body.removeEventListener('click', closeOnOutsideClick)
-    }
-  }, [closeOnOutsideClick, isDate])
-
   return (
-    <div ref={ref} className={classes}>
+    <div className={classes}>
       <label className={css.label}>
         {(label || (isValid && !error)) && (
           <span className={css.labelText}>
@@ -102,7 +83,13 @@ const Input = ({
       </label>
       {isDate && datePickerVisible && (
         <React.Suspense>
-          <DatePicker className={css.datePicker} min={min} max={max} value={value} onChange={_onChange} />
+          <DatePicker
+            className={css.datePicker}
+            min={inputProps?.min}
+            max={inputProps?.max}
+            value={value}
+            onChange={_onChange}
+          />
         </React.Suspense>
       )}
       {error && (
