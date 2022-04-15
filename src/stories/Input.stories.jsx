@@ -63,7 +63,7 @@ export default {
 const Template = (args) => {
   const [value, setValue] = React.useState(args.value)
   return (
-    <div className="demo-container">
+    <div className="demo-container" style={{ minHeight: 600 }}>
       <Input {...args} value={value} onChange={setValue} />
     </div>
   )

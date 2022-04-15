@@ -1,10 +1,15 @@
 .root {
   width: min-content;
-  max-width: 100%;
-  padding: 14px;
+  padding: 6px;
   font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
   box-shadow: var(--ds-date-picker-shadow, var(--ds-shadow-200, 0 5px 10px rgba(0, 0, 0, 0.12)));
   border-radius: var(--ds-date-picker-radius, var(--ds-radius-200, 10px));
+}
+
+@media (min-width: 350px) {
+  .root {
+    padding: 14px;
+  }
 }
 
 .inner {
@@ -17,7 +22,6 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 6px 0;
 }
 
 .control {
@@ -39,8 +43,15 @@
 .dates,
 .days {
   display: grid;
-  grid-template-columns: repeat(7, minmax(40px, 1fr));
+  grid-template-columns: repeat(7, minmax(36px, 1fr));
   gap: 3px;
+}
+
+@media (min-width: 350px) {
+  .dates,
+  .days {
+    grid-template-columns: repeat(7, minmax(40px, 1fr));
+  }
 }
 
 .days {

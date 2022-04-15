@@ -8,6 +8,10 @@
   gap: 5px;
 }
 
+.date {
+  position: relative;
+}
+
 .labelText {
   display: flex;
   align-items: center;
@@ -127,6 +131,12 @@
 .input.compact .field,
 .textarea.compact .field {
   padding: var(--ds-input-compact-padding, 5px);
+}
+
+.datePicker {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
 }
 
 .calendarIcon {

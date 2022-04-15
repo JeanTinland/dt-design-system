@@ -1,4 +1,5 @@
 import * as React from 'react'
+import classnames from 'classnames'
 import DateItem from './date-item'
 import Button from '../button'
 import * as Icons from '../icons'
@@ -7,7 +8,7 @@ import * as Utils from './utils'
 import css from './date-picker.module.css'
 import Menu from './menu'
 
-const DatePicker = ({ lang = 'fr', min, max, value, onChange, defaultMonth, defaultYear }) => {
+const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, defaultMonth, defaultYear }) => {
   const [menuOpened, setMenuOpened] = React.useState(false)
   const locale = lang || navigator?.language === 'fr' ? 'fr' : 'en'
   const now = new Date()
@@ -55,8 +56,12 @@ const DatePicker = ({ lang = 'fr', min, max, value, onChange, defaultMonth, defa
     setMenuOpened(!menuOpened)
   }
 
+  const classes = classnames(css.root, {
+    [className]: className
+  })
+
   return (
-    <div className={css.root}>
+    <div className={classes}>
       <div className={css.inner}>
         <div className={css.header}>
           <Button
