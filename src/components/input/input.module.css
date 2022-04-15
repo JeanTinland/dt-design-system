@@ -129,6 +129,16 @@
   padding: var(--ds-input-compact-padding, 5px);
 }
 
+.calendarIcon {
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  z-index: 1;
+}
+
 .validIndicator,
 .errorIndicator {
   flex: 0 0 14px;

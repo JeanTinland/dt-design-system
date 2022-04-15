@@ -1,1 +1,3 @@
-export { default } from './select'
+import Select from './select'
+
+export default Select

@@ -1,1 +1,3 @@
-export { default } from './multiple-select'
+import MultipleSelect from './multiple-select'
+
+export default MultipleSelect

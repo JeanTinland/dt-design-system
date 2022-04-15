@@ -60,11 +60,14 @@ export default {
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => (
-  <div className="demo-container">
-    <Input {...args} />
-  </div>
-)
+const Template = (args) => {
+  const [value, setValue] = React.useState(args.value)
+  return (
+    <div className="demo-container">
+      <Input {...args} value={value} onChange={setValue} />
+    </div>
+  )
+}
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -122,4 +125,11 @@ Compact.args = {
   label: 'Nom complet',
   placeholder: 'John Smith',
   compact: true
+}
+
+export const Date = Template.bind({})
+Date.args = {
+  type: 'date',
+  label: 'Arrivée en station',
+  placeholder: 'JJ/MM/AAAA'
 }
