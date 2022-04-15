@@ -35,7 +35,6 @@ const Input = ({
       onChange?.(e)
       toggleDatePicker()
     } else {
-      console.log(onChange)
       onChange?.(e.target.value, e)
     }
   }
