@@ -3,6 +3,7 @@
   padding: 6px;
   font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
   box-shadow: var(--ds-date-picker-shadow, var(--ds-shadow-200, 0 5px 10px rgba(0, 0, 0, 0.12)));
+  background-color: var(--ds-grey-000, #fff);
   border-radius: var(--ds-date-picker-radius, var(--ds-radius-200, 10px));
 }
 
