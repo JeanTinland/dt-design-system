@@ -101,19 +101,18 @@ const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, default
             />
           ))}
         </div>
-        {menuOpened && (
-          <Menu
-            lang={locale}
-            toggleMenu={toggleMenu}
-            year={year}
-            currentYear={currentYear}
-            selectedMonth={month}
-            minDate={minDate}
-            maxDate={maxDate}
-            setMonth={setMonth}
-            setYear={setYear}
-          />
-        )}
+        <Menu
+          lang={locale}
+          menuOpened={menuOpened}
+          toggleMenu={toggleMenu}
+          year={year}
+          currentYear={currentYear}
+          selectedMonth={month}
+          minDate={minDate}
+          maxDate={maxDate}
+          setMonth={setMonth}
+          setYear={setYear}
+        />
       </div>
     </div>
   )

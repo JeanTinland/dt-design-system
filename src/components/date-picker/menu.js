@@ -6,7 +6,18 @@ import * as Utils from './utils'
 import * as Data from './data'
 import css from './menu.module.css'
 
-const Menu = ({ lang, toggleMenu, year, currentYear, selectedMonth, minDate, maxDate, setMonth, setYear }) => {
+const Menu = ({
+  lang,
+  menuOpened,
+  toggleMenu,
+  year,
+  currentYear,
+  selectedMonth,
+  minDate,
+  maxDate,
+  setMonth,
+  setYear
+}) => {
   const ref = React.useRef()
   const minYear = minDate?.getFullYear() || currentYear - 122
   const maxYear = maxDate?.getFullYear() || currentYear + 122
@@ -44,8 +55,12 @@ const Menu = ({ lang, toggleMenu, year, currentYear, selectedMonth, minDate, max
     target?.scrollIntoView({ behavior: scrollBehavior, block: 'center', inline: 'center' })
   }, [scrollBehavior, selectedYear])
 
+  const classes = classnames(css.root, {
+    [css.rootOpened]: menuOpened
+  })
+
   return (
-    <div className={css.root}>
+    <div className={classes}>
       <div className={css.controls}>
         <Button className={css.control} StartIcon={Icons.ChevronUp} onClick={selectPreviousYear} />
         <Button className={css.control} StartIcon={Icons.ChevronDown} onClick={selectNextYear} />
@@ -72,9 +87,9 @@ const Menu = ({ lang, toggleMenu, year, currentYear, selectedMonth, minDate, max
             const index = i + 1
 
             const updateSelectedYearAndMonth = () => {
-              toggleMenu()
               setYear(selectedYear)
               setMonth(index)
+              toggleMenu()
             }
 
             const isInCurrentYear = year === selectedYear

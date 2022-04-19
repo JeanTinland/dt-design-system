@@ -23,6 +23,7 @@ const Input = ({
   onChange,
   inputProps = {}
 }) => {
+  const ref = React.useRef()
   const [datePickerVisible, setDatePickerVisible] = React.useState(false)
 
   const isDate = type === 'date'
@@ -36,6 +37,21 @@ const Input = ({
       onChange?.(e.target.value, e)
     }
   }
+
+  const closeOnOutsideClick = React.useCallback(
+    (e) => {
+      if (ref.current.contains(e.target)) return
+      setDatePickerVisible(false)
+    },
+    [setDatePickerVisible]
+  )
+
+  React.useEffect(() => {
+    if (isDate) {
+      document.body.addEventListener('click', closeOnOutsideClick)
+      return () => document.body.removeEventListener('click', closeOnOutsideClick)
+    }
+  }, [closeOnOutsideClick, isDate])
 
   const classes = classnames(css.input, {
     [css.compact]: compact,
@@ -52,7 +68,7 @@ const Input = ({
   }
 
   return (
-    <div className={classes}>
+    <div ref={ref} className={classes}>
       <label className={css.label}>
         {(label || (isValid && !error)) && (
           <span className={css.labelText}>
