@@ -92,7 +92,7 @@ const MultipleSelect = ({
               disabled={disabled}
               value={valueLabel}
               readOnly
-              aria-invalid={!isValid}
+              aria-invalid={isValid !== undefined && !isValid}
               onClick={toggleDropdown}
             />
           </div>

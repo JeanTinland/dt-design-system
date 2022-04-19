@@ -90,7 +90,7 @@ const Input = ({
             autoFocus={autoFocus}
             disabled={disabled}
             readOnly={isDate || readOnly}
-            aria-invalid={!isValid}
+            aria-invalid={isValid !== undefined && !isValid}
             onClick={toggleDatePicker}
             {...inputProps}
           />

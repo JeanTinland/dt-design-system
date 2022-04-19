@@ -54,7 +54,7 @@ const Select = ({
               required={required}
               disabled={disabled}
               readOnly={readOnly}
-              aria-invalid={!isValid}
+              aria-invalid={isValid !== undefined && !isValid}
               {...inputProps}
             >
               {options.map((option) => (

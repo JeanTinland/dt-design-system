@@ -79,7 +79,7 @@ const TextArea = ({
             autoFocus={autoFocus}
             disabled={disabled}
             readOnly={readOnly}
-            aria-invalid={!isValid}
+            aria-invalid={isValid !== undefined && !isValid}
             {...inputProps}
           />
         </div>
