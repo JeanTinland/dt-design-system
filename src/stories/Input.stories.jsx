@@ -65,6 +65,8 @@ const Template = (args) => {
   return (
     <div className="demo-container" style={{ minHeight: 600 }}>
       <Input {...args} value={value} onChange={setValue} />
+      <Input {...args} value={value} onChange={setValue} />
+      <Input {...args} value={value} onChange={setValue} />
     </div>
   )
 }

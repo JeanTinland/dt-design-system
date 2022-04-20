@@ -35,10 +35,10 @@ const DateInput = ({ fieldRef, value, onChange, placeholder = 'JJ/MM/AAAA', inpu
 
   return (
     <>
-      <div className={classes} onClick={toggleDatePicker} tabIndex="0">
+      <button className={classes} onClick={toggleDatePicker}>
         {formatedValue}
-      </div>
-      <Icons.Calendar className={css.calendarIcon} />
+        <Icons.Calendar className={css.calendarIcon} />
+      </button>
       {datePickerVisible && (
         <DatePicker
           className={css.datePicker}

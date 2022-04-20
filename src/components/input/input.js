@@ -49,33 +49,31 @@ const Input = ({
             {isValid && !error && <Icons.Check className={css.validIndicator} />}
           </span>
         )}
-        <div className={css.inner}>
-          {isDate ? (
-            <DateInput
-              value={value}
-              onChange={onChange}
-              inputProps={inputProps}
-              fieldRef={ref}
-              placeholder={placeholder}
-            />
-          ) : (
-            <input
-              ref={inputRef}
-              type={type}
-              name={name}
-              className={css.field}
-              value={value}
-              onChange={_onChange}
-              placeholder={placeholder}
-              required={required}
-              autoFocus={autoFocus}
-              disabled={disabled}
-              readOnly={readOnly}
-              aria-invalid={isValid !== undefined && !isValid}
-              {...inputProps}
-            />
-          )}
-        </div>
+        {isDate ? (
+          <DateInput
+            value={value}
+            onChange={onChange}
+            inputProps={inputProps}
+            fieldRef={ref}
+            placeholder={placeholder}
+          />
+        ) : (
+          <input
+            ref={inputRef}
+            type={type}
+            name={name}
+            className={css.field}
+            value={value}
+            onChange={_onChange}
+            placeholder={placeholder}
+            required={required}
+            autoFocus={autoFocus}
+            disabled={disabled}
+            readOnly={readOnly}
+            aria-invalid={isValid !== undefined && !isValid}
+            {...inputProps}
+          />
+        )}
       </LabelTag>
       {error && (
         <div className={css.errorMessage} role="alert">
