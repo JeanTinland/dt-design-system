@@ -8,10 +8,6 @@
   gap: 5px;
 }
 
-.date {
-  position: relative;
-}
-
 .labelText {
   display: flex;
   align-items: center;
@@ -93,6 +89,7 @@
   filter: grayscale(100%) opacity(40%);
 }
 
+.dateField:focus,
 .field:focus-visible {
   outline: var(--ds-focus-ring-width, 2px) solid var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
   outline-offset: var(--ds-focus-ring-offset, 2px);
@@ -131,6 +128,12 @@
 .input.compact .field,
 .textarea.compact .field {
   padding: var(--ds-input-compact-padding, 5px);
+}
+
+.dateField,
+.dateField:read-only {
+  cursor: pointer;
+  user-select: none;
 }
 
 .datePicker {

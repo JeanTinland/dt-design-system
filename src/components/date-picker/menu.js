@@ -51,9 +51,11 @@ const Menu = ({
   }
 
   React.useEffect(() => {
-    const target = ref.current?.querySelector(`[data-year="${selectedYear}"]`)
-    target?.scrollIntoView({ behavior: scrollBehavior, block: 'center', inline: 'center' })
-  }, [scrollBehavior, selectedYear])
+    if (menuOpened) {
+      const target = ref.current?.querySelector(`[data-year="${selectedYear}"]`)
+      target?.scrollIntoView({ behavior: scrollBehavior, block: 'center', inline: 'center' })
+    }
+  }, [menuOpened, scrollBehavior, selectedYear])
 
   const classes = classnames(css.root, {
     [css.rootOpened]: menuOpened

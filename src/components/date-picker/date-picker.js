@@ -9,7 +9,6 @@ import css from './date-picker.module.css'
 import Menu from './menu'
 
 const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, defaultMonth, defaultYear }) => {
-  const [menuOpened, setMenuOpened] = React.useState(false)
   const locale = lang || (typeof navigator !== 'undefined' && navigator.language) === 'fr' ? 'fr' : 'en'
   const now = new Date()
 
@@ -21,6 +20,7 @@ const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, default
   const currentMonth = now.getMonth() + 1
   const currentYear = now.getFullYear()
 
+  const [menuOpened, setMenuOpened] = React.useState(false)
   const [month, setMonth] = React.useState(defaultMonth || currentMonth)
   const [year, setYear] = React.useState(defaultYear || currentYear)
 
