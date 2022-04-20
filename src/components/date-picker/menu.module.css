@@ -13,6 +13,7 @@
   opacity: 0;
   pointer-events: none;
   touch-action: none;
+  transition: opacity 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .rootOpened {
