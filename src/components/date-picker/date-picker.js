@@ -11,6 +11,9 @@ import Menu from './menu'
 const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, defaultMonth, defaultYear }) => {
   const locale = lang || (typeof navigator !== 'undefined' && navigator.language) === 'fr' ? 'fr' : 'en'
   const now = new Date()
+  const date = value && new Date(value)
+  const dateMonth = date && date.getMonth() + 1
+  const dateYear = date && date.getFullYear()
 
   const minDate = min && new Date(min)
   minDate?.setHours(0, 0, 0, 0)
@@ -21,8 +24,8 @@ const DatePicker = ({ lang = 'fr', className, min, max, value, onChange, default
   const currentYear = now.getFullYear()
 
   const [menuOpened, setMenuOpened] = React.useState(false)
-  const [month, setMonth] = React.useState(defaultMonth || currentMonth)
-  const [year, setYear] = React.useState(defaultYear || currentYear)
+  const [month, setMonth] = React.useState(defaultMonth || dateMonth || currentMonth)
+  const [year, setYear] = React.useState(defaultYear || dateYear || currentYear)
 
   const pastMonthDisabled =
     (minDate && month <= minDate.getMonth() + 1 && year <= minDate.getFullYear()) ||
