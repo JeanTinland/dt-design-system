@@ -34,6 +34,7 @@ const Input = ({
 
   const classes = classnames(css.input, {
     [css.compact]: compact,
+    [css.date]: isDate,
     [className]: className,
     [css.valid]: isValid,
     [css.error]: error
