@@ -7,6 +7,11 @@ import css from './input.module.css'
 const DateInput = ({ fieldRef, value, onChange, placeholder = 'JJ/MM/AAAA', inputProps }) => {
   const [datePickerVisible, setDatePickerVisible] = React.useState(false)
 
+  const _onChange = (value) => {
+    onChange?.(value)
+    setDatePickerVisible(false)
+  }
+
   const closeOnOutsideClick = React.useCallback(
     (e) => {
       if (fieldRef.current.contains(e.target)) return
@@ -40,7 +45,7 @@ const DateInput = ({ fieldRef, value, onChange, placeholder = 'JJ/MM/AAAA', inpu
           min={inputProps?.min}
           max={inputProps?.max}
           value={value}
-          onChange={onChange}
+          onChange={_onChange}
         />
       )}
     </>
