@@ -19,6 +19,11 @@
     transform 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
+.alignDropdownToRight .dropdown {
+  left: unset;
+  right: 0;
+}
+
 .opened .dropdown {
   opacity: 1;
   transform: none;

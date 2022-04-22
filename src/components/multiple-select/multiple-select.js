@@ -21,7 +21,8 @@ const MultipleSelect = ({
   disabled,
   onChange,
   defaultOpened = false,
-  onOpen
+  onOpen,
+  alignDropdownToRight
 }) => {
   const ref = React.useRef()
   const [opened, setOpened] = React.useState(defaultOpened)
@@ -29,8 +30,7 @@ const MultipleSelect = ({
 
   const closeOnOutsideClick = React.useCallback(
     (e) => {
-      const target = e.target.closest(`.${css.select}`)
-      if (target === ref.current) return
+      if (ref.current.contains(e.target)) return
       setOpened(false)
     },
     [setOpened]
@@ -68,6 +68,7 @@ const MultipleSelect = ({
     [className]: className,
     [cssInput.valid]: isValid,
     [cssInput.error]: error,
+    [css.alignDropdownToRight]: alignDropdownToRight,
     [css.opened]: opened
   })
 
