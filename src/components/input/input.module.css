@@ -24,7 +24,7 @@
 }
 
 .error .labelText {
-  color: var(--ds-red, #f26464);
+  color: var(--ds-red-400, #f26464);
 }
 
 .field {
@@ -136,11 +136,11 @@
 }
 
 .validIndicator {
-  fill: var(--ds-green, #4bde97);
+  fill: var(--ds-green-400, #4bde97);
 }
 
 .errorIndicator {
-  fill: var(--ds-red, #f26464);
+  fill: var(--ds-red-400, #f26464);
 }
 
 .errorMessage {
@@ -148,7 +148,7 @@
   align-items: center;
   gap: 1ch;
   padding: 0 3px;
-  color: var(--ds-red, #f26464);
+  color: var(--ds-red-400, #f26464);
   font-style: italic;
   font-size: 11px;
 }

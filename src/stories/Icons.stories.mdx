@@ -37,7 +37,7 @@ export const IconsDemo = () => {
           .map((key) => {
             const isCopied = copied === key
             const Icon = Icons[isCopied ? 'Check' : key]
-            const color = isCopied ? 'var(--ds-green)' : 'currentColor'
+            const color = isCopied ? 'var(--ds-green-400)' : 'currentColor'
             return (
               <button key={key} className="demo-container__icon-container" onClick={() => copyToClipboard(key)}>
                 <Icon className="demo-container__icon" style={{ fill: color }} />
