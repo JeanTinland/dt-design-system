@@ -12,7 +12,12 @@ export const useSnackbar = () => {
   return context
 }
 
+const getUniqueId = () => {
+  return Math.floor((1 + Math.random()) * 0x10000)
+}
+
 const SnackbarProvider = (props) => {
+  const [uniqueId, setUniqueId] = React.useState()
   const [snackbar, setSnackbar] = React.useState()
   const [closing, setClosing] = React.useState(false)
   const [visibilityTimeout, setVisibilityTimeout] = React.useState()
@@ -29,11 +34,13 @@ const SnackbarProvider = (props) => {
         setClosing(false)
         setSnackbar(undefined)
         setClosingTimeout(undefined)
+        setUniqueId(undefined)
       }, CLOSING_DELAY)
     )
   }
 
   const show = (options = {}) => {
+    setUniqueId(getUniqueId())
     clearTimeout(visibilityTimeout)
     clearTimeout(delayedVisibilityTimeout)
     if (snackbar) {
@@ -60,12 +67,10 @@ const SnackbarProvider = (props) => {
     }
   }
 
-  const key = JSON.stringify(snackbar)
-
   return (
     <SnackbarContext.Provider value={{ show, hide }} {...props}>
       {props.children}
-      {snackbar && <Snackbar key={key} {...snackbar} closing={closing} close={hide} />}
+      {snackbar && <Snackbar key={uniqueId} {...snackbar} closing={closing} close={hide} />}
     </SnackbarContext.Provider>
   )
 }
