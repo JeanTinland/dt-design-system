@@ -47,7 +47,7 @@ const Inner = (args) => {
           '--ds-button-hover-background': 'var(--ds-green-500)'
         }}
       >
-        Afficher la snackbar "success"
+        success
       </Button>
       <Button
         onClick={showWarning}
@@ -56,7 +56,7 @@ const Inner = (args) => {
           '--ds-button-hover-background': 'var(--ds-yellow-500)'
         }}
       >
-        Afficher la snackbar "warning"
+        warning
       </Button>
       <Button
         onClick={showError}
@@ -65,7 +65,7 @@ const Inner = (args) => {
           '--ds-button-hover-background': 'var(--ds-red-500)'
         }}
       >
-        Afficher la snackbar "error"
+        error
       </Button>
       <Button
         onClick={showInformation}
@@ -74,10 +74,11 @@ const Inner = (args) => {
           '--ds-button-hover-background': 'var(--ds-grey-700)'
         }}
       >
-        Afficher la snackbar "information"
+        information
       </Button>
     </div>
   )
 }
 
 export const Basic = Template.bind({})
+Basic.args = {}

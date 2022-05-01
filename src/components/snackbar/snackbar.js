@@ -41,7 +41,7 @@ const Snackbar = ({
         <div className={css.text}>{message}</div>
       </div>
       {showCloseButton && (
-        <button className={css.close} onClick={close}>
+        <button className={css.close} onClick={() => close()}>
           <Icons.Cross className={css.closeIcon} />
         </button>
       )}

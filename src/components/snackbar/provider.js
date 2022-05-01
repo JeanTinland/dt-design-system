@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Snackbar from './snackbar'
 
-const ANIMATION_DELAY = 320
+const CLOSING_DELAY = 320
 const DEFAULT_DELAY = 4500
 
 const SnackbarContext = React.createContext()
@@ -15,35 +15,57 @@ export const useSnackbar = () => {
 const SnackbarProvider = (props) => {
   const [snackbar, setSnackbar] = React.useState()
   const [closing, setClosing] = React.useState(false)
-
-  let timer
+  const [visibilityTimeout, setVisibilityTimeout] = React.useState()
+  const [delayedVisibilityTimeout, setDelayedVisibilityTimeout] = React.useState()
+  const [closingTimeout, setClosingTimeout] = React.useState()
 
   const delay = snackbar?.delay || DEFAULT_DELAY
 
   const hide = () => {
+    clearTimeout(closingTimeout)
     setClosing(true)
+    setClosingTimeout(
+      setTimeout(() => {
+        setClosing(false)
+        setSnackbar(undefined)
+        setClosingTimeout(undefined)
+      }, CLOSING_DELAY)
+    )
   }
 
   const show = (options = {}) => {
-    clearTimeout(timer)
-    setSnackbar(options)
-    timer = setTimeout(hide, delay)
+    clearTimeout(visibilityTimeout)
+    clearTimeout(delayedVisibilityTimeout)
+    if (snackbar) {
+      hide()
+      setDelayedVisibilityTimeout(
+        setTimeout(() => {
+          setSnackbar(options)
+        }, CLOSING_DELAY)
+      )
+      setVisibilityTimeout(
+        setTimeout(() => {
+          hide()
+          setVisibilityTimeout(undefined)
+        }, delay + CLOSING_DELAY)
+      )
+    } else {
+      setSnackbar(options)
+      setVisibilityTimeout(
+        setTimeout(() => {
+          hide()
+          setVisibilityTimeout(undefined)
+        }, delay)
+      )
+    }
   }
 
-  React.useEffect(() => {
-    if (snackbar && closing) {
-      const timer = setTimeout(() => {
-        setSnackbar(undefined)
-        setClosing(false)
-      }, ANIMATION_DELAY)
-      return () => clearTimeout(timer)
-    }
-  }, [closing, snackbar])
+  const key = JSON.stringify(snackbar)
 
   return (
     <SnackbarContext.Provider value={{ show, hide }} {...props}>
       {props.children}
-      {snackbar && <Snackbar {...snackbar} closing={closing} close={hide} />}
+      {snackbar && <Snackbar key={key} {...snackbar} closing={closing} close={hide} />}
     </SnackbarContext.Provider>
   )
 }
