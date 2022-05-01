@@ -40,7 +40,6 @@ const SnackbarProvider = (props) => {
   }
 
   const show = (options = {}) => {
-    setUniqueId(getUniqueId())
     clearTimeout(visibilityTimeout)
     clearTimeout(delayedVisibilityTimeout)
     if (snackbar) {
@@ -48,6 +47,7 @@ const SnackbarProvider = (props) => {
       setDelayedVisibilityTimeout(
         setTimeout(() => {
           setSnackbar(options)
+          setUniqueId(getUniqueId())
         }, CLOSING_DELAY)
       )
       setVisibilityTimeout(
@@ -58,6 +58,7 @@ const SnackbarProvider = (props) => {
       )
     } else {
       setSnackbar(options)
+      setUniqueId(getUniqueId())
       setVisibilityTimeout(
         setTimeout(() => {
           hide()

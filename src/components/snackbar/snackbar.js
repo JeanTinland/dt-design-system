@@ -24,10 +24,7 @@ const Snackbar = ({
   const Icon = icons[type] || icons.information
 
   const classes = classnames(css.root, {
-    [css.success]: type === 'success',
-    [css.error]: type === 'error',
-    [css.warning]: type === 'warning',
-    [css.information]: type === 'information',
+    [css[type]]: type,
     [css.filler]: filler,
     [css.closing]: closing
   })
