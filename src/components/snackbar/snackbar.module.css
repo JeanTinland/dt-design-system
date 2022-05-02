@@ -15,7 +15,7 @@
   overflow: hidden;
   transform-origin: top left;
   transform: translateX(-50%);
-  z-index: 860;
+  z-index: var(--ds-snackbar-z-index, 100);
   animation: ds-snackbar-appearance 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
   transition: opacity 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
     transform 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
