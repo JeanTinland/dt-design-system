@@ -9,8 +9,8 @@
   padding: 8px 20px;
   color: var(--cms-grey-000, #ffffff);
   background-color: var(--ds-grey-700, #171e30);
-  border-radius: var(--ds-radius-200, 10px);
-  box-shadow: var(--ds-shadow-100, 0 5px 10px rgba(0, 0, 0, 0.12));
+  border-radius: var(--ds-snackbar-radius, var(--ds-radius-200, 10px));
+  box-shadow: var(--ds-snackbar-shadow, var(--ds-shadow-200, 0 5px 10px rgba(0, 0, 0, 0.12)));
   user-select: none;
   overflow: hidden;
   transform-origin: top left;
@@ -104,8 +104,8 @@
 .text {
   color: currentColor;
   font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: var(--ds-snackbar-font-size, 18px);
+  font-weight: var(--ds-snackbar-font-weight, 700);
 }
 
 .close {
