@@ -16,8 +16,10 @@ const DateInput = ({ fieldRef, value, onChange, placeholder = 'JJ/MM/AAAA', inpu
 
   const closeOnOutsideClick = React.useCallback(
     (e) => {
-      if (fieldRef.current.contains(e.target) || datePickerRef.current.contains(e.target)) return
-      setDatePickerVisible(false)
+      if (datePickerVisible) {
+        if (fieldRef.current?.contains(e.target) || datePickerRef.current?.contains(e.target)) return
+        setDatePickerVisible(false)
+      }
     },
     [fieldRef]
   )
