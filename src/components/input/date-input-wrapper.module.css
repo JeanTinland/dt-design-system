@@ -1,5 +1,5 @@
 .dateInputWrapper {
-  position: absolute;
+  position: fixed;
   isolation: isolate;
   z-index: 2147483647;
 }
