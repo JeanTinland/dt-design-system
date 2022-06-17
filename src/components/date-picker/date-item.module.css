@@ -37,16 +37,7 @@
 }
 
 .dateNotInMonth {
-  opacity: 0.6;
-}
-
-@media (min-width: 810px) {
-  .dateNotInMonth,
-  .dateDisabled.dateNotInMonth {
-    opacity: 0;
-    pointer-events: none;
-    touch-action: none;
-  }
+  opacity: 0.5;
 }
 
 .date:not(.dateDisabled):not(.dateSelected):hover {
