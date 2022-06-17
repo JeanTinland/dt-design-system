@@ -21,7 +21,7 @@ const DateInput = ({ fieldRef, value, onChange, placeholder = 'JJ/MM/AAAA', inpu
         setDatePickerVisible(false)
       }
     },
-    [fieldRef]
+    [datePickerVisible, fieldRef]
   )
 
   const toggleDatePicker = () => {
