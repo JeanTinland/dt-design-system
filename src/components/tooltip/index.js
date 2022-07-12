@@ -1,3 +1,3 @@
-import TooltipProvider from './provider'
+import TooltipProvider from "./provider";
 
-export default TooltipProvider
+export default TooltipProvider;

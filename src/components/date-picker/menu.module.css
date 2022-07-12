@@ -13,7 +13,8 @@
   opacity: 0;
   pointer-events: none;
   touch-action: none;
-  transition: opacity 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: opacity 160ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .rootOpened {
@@ -95,8 +96,10 @@
 .month {
   color: var(--ds-grey-600, #2d303c);
   background-color: transparent;
-  transition: color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
-    background-color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: color 160ms
+      var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
+    background-color 160ms
+      var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .year:not(:disabled):not(.yearSelected):hover,

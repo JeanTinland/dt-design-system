@@ -1,13 +1,30 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import Checkbox from '../checkbox'
-import * as Icons from '../icons'
-import css from './multiple-select.module.css'
-import cssInput from '../input/input.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import Checkbox from "../checkbox";
+import * as Icons from "../icons";
+import css from "./multiple-select.module.css";
+import cssInput from "../input/input.module.css";
+
+const getNewValues = (value, values, uniqueChoice) => {
+  const isSelected = !!values.find((o) => {
+    return o === value || o.value === value;
+  });
+
+  if (uniqueChoice) {
+    return isSelected ? [] : [value];
+  }
+
+  return isSelected
+    ? values.filter((v) => {
+        const isObject = typeof v === "object";
+        return isObject ? v.value !== value : v !== value;
+      })
+    : [...values, value];
+};
 
 const MultipleSelect = ({
   inputRef,
-  label = '',
+  label = "",
   name,
   options = [],
   valueLabel,
@@ -22,46 +39,41 @@ const MultipleSelect = ({
   onChange,
   defaultOpened = false,
   onOpen,
-  alignDropdownToRight
+  alignDropdownToRight,
+  uniqueChoice,
 }) => {
-  const ref = React.useRef()
-  const [opened, setOpened] = React.useState(defaultOpened)
-  const isValid = valid && !error
+  const ref = React.useRef();
+  const [opened, setOpened] = React.useState(defaultOpened);
+  const isValid = valid && !error;
 
   const closeOnOutsideClick = React.useCallback(
     (e) => {
-      if (ref.current.contains(e.target)) return
-      setOpened(false)
+      if (ref.current.contains(e.target)) return;
+      setOpened(false);
     },
     [setOpened]
-  )
+  );
 
   const _onChange = (option) => () => {
-    const value = option?.value ?? option
-    const isSelected = values.find((o) => {
-      return o === value || o.value === value
-    })
-
-    const newValues = isSelected
-      ? values.filter((v) => {
-          const isObject = typeof v !== 'string'
-          return isObject ? v.value !== value : v !== value
-        })
-      : [...values, option]
-
-    onChange?.(newValues)
-  }
+    const newValues = getNewValues(
+      option?.value ?? option,
+      values,
+      uniqueChoice
+    );
+    onChange?.(newValues);
+  };
 
   const toggleDropdown = () => {
-    const newOpenedValue = !opened
-    setOpened(newOpenedValue)
-    onOpen?.(newOpenedValue)
-  }
+    const newOpenedValue = !opened;
+    setOpened(newOpenedValue);
+    onOpen?.(newOpenedValue);
+  };
 
   React.useEffect(() => {
-    document.body.addEventListener('click', closeOnOutsideClick)
-    return () => document.body.removeEventListener('click', closeOnOutsideClick)
-  }, [closeOnOutsideClick])
+    document.body.addEventListener("click", closeOnOutsideClick);
+    return () =>
+      document.body.removeEventListener("click", closeOnOutsideClick);
+  }, [closeOnOutsideClick]);
 
   const classes = classnames(cssInput.select, css.select, {
     [cssInput.compact]: compact,
@@ -69,8 +81,8 @@ const MultipleSelect = ({
     [cssInput.valid]: isValid,
     [cssInput.error]: error,
     [css.alignDropdownToRight]: alignDropdownToRight,
-    [css.opened]: opened
-  })
+    [css.opened]: opened,
+  });
 
   return (
     <div ref={ref} className={classes}>
@@ -102,19 +114,19 @@ const MultipleSelect = ({
       <div className={css.dropdown}>
         <div role="listbox" className={css.dropdownInner}>
           {options.map((option) => {
-            const label = option?.label ?? option
-            const value = option?.value ?? option
+            const label = option?.label ?? option;
+            const value = option?.value ?? option;
 
             const isSelected =
               values.find((o) => {
-                return o === value || o.value === value
-              }) ?? false
+                return o === value || o.value === value;
+              }) ?? false;
 
             const classes = classnames(css.option, {
-              [css.optionSelected]: isSelected
-            })
+              [css.optionSelected]: isSelected,
+            });
 
-            const inputProps = { tabIndex: opened ? 0 : -1 }
+            const inputProps = { tabIndex: opened ? 0 : -1 };
 
             return (
               <div key={value} role="listitem">
@@ -126,7 +138,7 @@ const MultipleSelect = ({
                   inputProps={inputProps}
                 />
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -137,7 +149,7 @@ const MultipleSelect = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MultipleSelect
+export default MultipleSelect;

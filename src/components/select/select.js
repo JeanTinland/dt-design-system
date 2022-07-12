@@ -1,11 +1,11 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import * as Icons from '../icons'
-import css from '../input/input.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import * as Icons from "../icons";
+import css from "../input/input.module.css";
 
 const Select = ({
   inputRef,
-  label = '',
+  label = "",
   name,
   options = [],
   className,
@@ -18,20 +18,20 @@ const Select = ({
   disabled,
   readOnly,
   onChange,
-  inputProps = {}
+  inputProps = {},
 }) => {
   const _onChange = (e) => {
-    onChange?.(e.target.value, e)
-  }
+    onChange?.(e.target.value, e);
+  };
 
-  const isValid = valid && !error
+  const isValid = valid && !error;
 
   const classes = classnames(css.select, {
     [css.compact]: compact,
     [className]: className,
     [css.valid]: isValid,
-    [css.error]: error
-  })
+    [css.error]: error,
+  });
 
   return (
     <div className={classes}>
@@ -58,7 +58,10 @@ const Select = ({
               {...inputProps}
             >
               {options.map((option) => (
-                <option key={option?.value ?? option} value={option?.value ?? option}>
+                <option
+                  key={option?.value ?? option}
+                  value={option?.value ?? option}
+                >
                   {option?.label ?? option}
                 </option>
               ))}
@@ -73,6 +76,6 @@ const Select = ({
         </div>
       )}
     </div>
-  )
-}
-export default Select
+  );
+};
+export default Select;

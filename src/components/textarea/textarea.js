@@ -1,12 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import * as Icons from '../icons'
-import css from '../input/input.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import * as Icons from "../icons";
+import css from "../input/input.module.css";
 
 const TextArea = ({
   inputRef,
-  type = 'text',
-  label = '',
+  type = "text",
+  label = "",
   name,
   placeholder,
   className,
@@ -20,31 +20,35 @@ const TextArea = ({
   autoSizing,
   disabled,
   readOnly,
-  inputProps = {}
+  inputProps = {},
 }) => {
-  const innerRef = React.useRef()
+  const innerRef = React.useRef();
 
   const _onChange = (e) => {
-    onChange?.(e.target.value, e)
-  }
+    onChange?.(e.target.value, e);
+  };
 
   const updateTextAreaHeight = React.useCallback(() => {
-    const container = innerRef.current
-    if (!autoSizing || !container) return
-    const field = container.querySelector('textarea')
-    field.style.height = 'inherit'
-    const computedStyle = window.getComputedStyle(field)
-    const paddingTop = parseInt(computedStyle.getPropertyValue('padding-top') ?? 0)
-    const paddingBottom = parseInt(computedStyle.getPropertyValue('padding-bottom') ?? 0)
-    const height = paddingTop + field.scrollHeight + paddingBottom
-    field.style.height = `${height}px`
-  }, [autoSizing])
+    const container = innerRef.current;
+    if (!autoSizing || !container) return;
+    const field = container.querySelector("textarea");
+    field.style.height = "inherit";
+    const computedStyle = window.getComputedStyle(field);
+    const paddingTop = parseInt(
+      computedStyle.getPropertyValue("padding-top") ?? 0
+    );
+    const paddingBottom = parseInt(
+      computedStyle.getPropertyValue("padding-bottom") ?? 0
+    );
+    const height = paddingTop + field.scrollHeight + paddingBottom;
+    field.style.height = `${height}px`;
+  }, [autoSizing]);
 
   React.useEffect(() => {
-    updateTextAreaHeight()
-  }, [updateTextAreaHeight])
+    updateTextAreaHeight();
+  }, [updateTextAreaHeight]);
 
-  const isValid = valid && !error
+  const isValid = valid && !error;
 
   const classes = classnames(css.textarea, {
     [css.compact]: compact,
@@ -52,8 +56,8 @@ const TextArea = ({
     [css.autoSizing]: autoSizing,
     [className]: className,
     [css.valid]: isValid,
-    [css.error]: error
-  })
+    [css.error]: error,
+  });
 
   return (
     <div className={classes}>
@@ -91,6 +95,6 @@ const TextArea = ({
         </div>
       )}
     </div>
-  )
-}
-export default TextArea
+  );
+};
+export default TextArea;

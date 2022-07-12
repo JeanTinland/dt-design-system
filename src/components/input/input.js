@@ -1,13 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import * as Icons from '../icons'
-import DateInput from './date-input'
-import css from './input.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import * as Icons from "../icons";
+import DateInput from "./date-input";
+import css from "./input.module.css";
 
 const Input = ({
   inputRef,
-  type = 'text',
-  label = '',
+  type = "text",
+  label = "",
   name,
   placeholder,
   className,
@@ -20,25 +20,25 @@ const Input = ({
   disabled,
   readOnly,
   onChange,
-  inputProps = {}
+  inputProps = {},
 }) => {
-  const ref = React.useRef()
+  const ref = React.useRef();
 
-  const isDate = type === 'date'
-  const isValid = valid && !error
-  const LabelTag = isDate ? 'div' : 'label'
+  const isDate = type === "date";
+  const isValid = valid && !error;
+  const LabelTag = isDate ? "div" : "label";
 
   const _onChange = (e) => {
-    onChange?.(e.target.value, e)
-  }
+    onChange?.(e.target.value, e);
+  };
 
   const classes = classnames(css.input, {
     [css.compact]: compact,
     [css.date]: isDate,
     [className]: className,
     [css.valid]: isValid,
-    [css.error]: error
-  })
+    [css.error]: error,
+  });
 
   return (
     <div ref={ref} className={classes}>
@@ -46,7 +46,9 @@ const Input = ({
         {(label || (isValid && !error)) && (
           <span className={css.labelText}>
             {label}
-            {isValid && !error && <Icons.Check className={css.validIndicator} />}
+            {isValid && !error && (
+              <Icons.Check className={css.validIndicator} />
+            )}
           </span>
         )}
         {isDate ? (
@@ -82,6 +84,6 @@ const Input = ({
         </div>
       )}
     </div>
-  )
-}
-export default Input
+  );
+};
+export default Input;

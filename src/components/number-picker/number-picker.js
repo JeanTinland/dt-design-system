@@ -1,51 +1,60 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import * as Icons from '../icons'
-import Button from '../button'
-import Input from '../input'
-import css from './number-picker.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import * as Icons from "../icons";
+import Button from "../button";
+import Input from "../input";
+import css from "./number-picker.module.css";
 
 const subtract = (value, min, max, onChange) => () => {
-  changeValue(value, -1, min, max, onChange)
-}
+  changeValue(value, -1, min, max, onChange);
+};
 
 const add = (value, min, max, onChange) => () => {
-  changeValue(value, 1, min, max, onChange)
-}
+  changeValue(value, 1, min, max, onChange);
+};
 
 const update = (min, max, onChange) => (value) => {
-  changeValue(value, 0, min, max, onChange)
-}
+  changeValue(value, 0, min, max, onChange);
+};
 
 const changeValue = (value, step, min, max, onChange) => {
-  const newValue = parseInt(value) + step
+  const newValue = parseInt(value) + step;
   switch (true) {
     case newValue >= min && newValue <= max:
-      onChange(newValue)
-      break
+      onChange(newValue);
+      break;
     case newValue < min:
-      onChange(min)
-      break
+      onChange(min);
+      break;
     case newValue > max:
-      onChange(max)
-      break
+      onChange(max);
+      break;
   }
-}
+};
 
-const isBelow = (val, min, disabled) => disabled || val <= min
+const isBelow = (val, min, disabled) => disabled || val <= min;
 
-const isAbove = (val, max, disabled) => disabled || val >= max
+const isAbove = (val, max, disabled) => disabled || val >= max;
 
-const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabled, onChange, withInput }) => {
+const NumberPicker = ({
+  label,
+  className,
+  min = 0,
+  max = Infinity,
+  value,
+  disabled,
+  onChange,
+  withInput,
+}) => {
   const classes = classnames(css.picker, {
     [className]: className,
     [css.active]: value > 0,
     [css.disabled]: disabled,
-    [css.withInput]: withInput
-  })
+    [css.withInput]: withInput,
+  });
 
-  const valueLength = value.toString().length
-  const inputSize = valueLength < 2 ? 2 : valueLength
+  const valueLength = value.toString().length;
+  const inputSize = valueLength < 2 ? 2 : valueLength;
 
   return (
     <div className={classes}>
@@ -79,7 +88,7 @@ const NumberPicker = ({ label, className, min = 0, max = Infinity, value, disabl
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NumberPicker
+export default NumberPicker;

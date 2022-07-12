@@ -4,7 +4,7 @@
 .label {
   display: flex;
   flex-direction: column;
-  font-family: var(--ds-sans-serif-font, 'Open Sans', inherit, sans-serif);
+  font-family: var(--ds-sans-serif-font, "Open Sans", inherit, sans-serif);
   gap: 5px;
 }
 
@@ -57,12 +57,14 @@
 
 .dateField:focus,
 .field:focus-visible {
-  outline: var(--ds-focus-ring-width, 2px) solid var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
+  outline: var(--ds-focus-ring-width, 2px) solid
+    var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
   outline-offset: var(--ds-focus-ring-offset, 2px);
 }
 
 .select .field {
-  padding: var(--ds-input-padding, 8px) calc(24px + var(--ds-input-padding, 8px)) var(--ds-input-padding, 8px)
+  padding: var(--ds-input-padding, 8px)
+    calc(24px + var(--ds-input-padding, 8px)) var(--ds-input-padding, 8px)
     var(--ds-input-padding, 8px);
   appearance: none;
   background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'%3E%3C/path%3E%3C/svg%3E");
@@ -86,7 +88,8 @@
 }
 
 .select.compact .field {
-  padding: var(--ds-input-compact-padding, 5px) calc(24px + var(--ds-input-compact-padding, 8px))
+  padding: var(--ds-input-compact-padding, 5px)
+    calc(24px + var(--ds-input-compact-padding, 8px))
     var(--ds-input-compact-padding, 5px) var(--ds-input-compact-padding, 5px);
 }
 
@@ -126,7 +129,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: input-validation-indicator-appearance 320ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  animation: input-validation-indicator-appearance 320ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 @keyframes input-validation-indicator-appearance {

@@ -1,16 +1,24 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import css from './checkbox.module.css'
+import * as React from "react";
+import classnames from "classnames";
+import css from "./checkbox.module.css";
 
-const Checkbox = ({ label, className, onChange, value, disabled, required, inputProps }) => {
+const Checkbox = ({
+  label,
+  className,
+  onChange,
+  value,
+  disabled,
+  required,
+  inputProps,
+}) => {
   const _onChange = (e) => {
-    onChange?.(e.target.checked, e)
-  }
+    onChange?.(e.target.checked, e);
+  };
 
   const classes = classnames(css.field, {
     [css.disabled]: disabled,
-    [className]: className
-  })
+    [className]: className,
+  });
 
   return (
     <label className={classes}>
@@ -26,7 +34,7 @@ const Checkbox = ({ label, className, onChange, value, disabled, required, input
       <span className={css.checkmark} />
       <div className={css.label}>{label}</div>
     </label>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;

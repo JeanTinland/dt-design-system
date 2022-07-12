@@ -9,13 +9,17 @@
   cursor: pointer;
   user-select: none;
   outline: none;
-  transition: color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
-    background-color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
-    border-radius 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: color 160ms
+      var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
+    background-color 160ms
+      var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1)),
+    border-radius 160ms
+      var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .date:focus-visible {
-  outline: var(--ds-focus-ring-width, 2px) solid var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
+  outline: var(--ds-focus-ring-width, 2px) solid
+    var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
   outline-offset: var(--ds-focus-ring-offset, 2px);
 }
 

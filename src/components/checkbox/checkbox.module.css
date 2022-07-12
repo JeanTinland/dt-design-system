@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: color 160ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .disabled {
@@ -38,17 +39,19 @@
   box-sizing: content-box;
   border-radius: var(--ds-input-radius, var(--ds-radius-100, 3px));
   transform-origin: center;
-  transition: background-color 160ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: background-color 160ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .field:focus-within .checkmark {
-  outline: var(--ds-focus-ring-width, 2px) solid var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
+  outline: var(--ds-focus-ring-width, 2px) solid
+    var(--ds-focus-ring-color, var(--ds-blue-400, #4177f6));
   outline-offset: var(--ds-focus-ring-offset, 2px);
 }
 
 .checkmark::before,
 .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -61,24 +64,28 @@
   top: 11px;
   left: 9px;
   transform: rotate(45deg);
-  transition: width 60ms 100ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: width 60ms 100ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .checkmark::after {
   top: 15px;
   left: 10px;
   transform: rotate(305deg);
-  transition: width 60ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: width 60ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .checkbox:checked + .checkmark::before {
   width: 5px;
-  transition: width 60ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: width 60ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .checkbox:checked + .checkmark::after {
   width: 10px;
-  transition: width 60ms 100ms var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+  transition: width 60ms 100ms
+    var(--ds-transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .checkbox:checked + .checkmark {
