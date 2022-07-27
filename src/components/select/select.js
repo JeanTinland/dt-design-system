@@ -61,6 +61,7 @@ const Select = ({
                 <option
                   key={option?.value ?? option}
                   value={option?.value ?? option}
+                  disabled={options?.disabled}
                 >
                   {option?.label ?? option}
                 </option>

@@ -116,6 +116,7 @@ const MultipleSelect = ({
           {options.map((option) => {
             const label = option?.label ?? option;
             const value = option?.value ?? option;
+            const disabled = options?.disabled;
 
             const isSelected =
               values.find((o) => {
@@ -136,6 +137,7 @@ const MultipleSelect = ({
                   value={isSelected}
                   onChange={_onChange(option)}
                   inputProps={inputProps}
+                  disabled={disabled}
                 />
               </div>
             );
