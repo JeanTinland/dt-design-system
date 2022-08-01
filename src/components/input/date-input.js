@@ -57,7 +57,7 @@ const DateInput = ({
     <>
       <Input
         name={name}
-        ref={inputRef}
+        inputRef={inputRef}
         type="text"
         className={classes}
         inputProps={{ onClick: toggleDatePicker }}
