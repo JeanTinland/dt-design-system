@@ -18,10 +18,15 @@ const Select = ({
   disabled,
   readOnly,
   onChange,
+  returnBareEvent,
   inputProps = {},
 }) => {
   const _onChange = (e) => {
-    onChange?.(e.target.value, e);
+    if (returnBareEvent) {
+      onChange?.(e);
+    } else {
+      onChange?.(e.target.value, e);
+    }
   };
 
   const isValid = valid && !error;

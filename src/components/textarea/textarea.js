@@ -20,12 +20,17 @@ const TextArea = ({
   autoSizing,
   disabled,
   readOnly,
+  returnBareEvent,
   inputProps = {},
 }) => {
   const innerRef = React.useRef();
 
   const _onChange = (e) => {
-    onChange?.(e.target.value, e);
+    if (returnBareEvent) {
+      onChange?.(e);
+    } else {
+      onChange?.(e.target.value, e);
+    }
   };
 
   const updateTextAreaHeight = React.useCallback(() => {

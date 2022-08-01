@@ -20,6 +20,7 @@ const Input = ({
   disabled,
   readOnly,
   onChange,
+  returnBareEvent,
   inputProps = {},
 }) => {
   const ref = React.useRef();
@@ -29,7 +30,11 @@ const Input = ({
   const LabelTag = isDate ? "div" : "label";
 
   const _onChange = (e) => {
-    onChange?.(e.target.value, e);
+    if (returnBareEvent) {
+      onChange?.(e);
+    } else {
+      onChange?.(e.target.value, e);
+    }
   };
 
   const classes = classnames(css.input, {
