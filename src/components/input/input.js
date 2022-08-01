@@ -63,6 +63,7 @@ const Input = ({
 
         {isDate ? (
           <DateInput
+            name={name}
             value={value}
             onChange={_onChange}
             inputProps={inputProps}

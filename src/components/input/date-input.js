@@ -9,6 +9,7 @@ import Input from "./input";
 const DateInput = ({
   fieldRef,
   inputRef,
+  name,
   value,
   onChange,
   placeholder = "JJ/MM/AAAA",
@@ -55,6 +56,7 @@ const DateInput = ({
   return (
     <>
       <Input
+        name={name}
         ref={inputRef}
         type="text"
         className={classes}
