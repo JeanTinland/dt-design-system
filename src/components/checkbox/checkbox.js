@@ -9,15 +9,10 @@ const Checkbox = ({
   value,
   disabled,
   required,
-  returnBareEvent,
   inputProps,
 }) => {
   const _onChange = (e) => {
-    if (returnBareEvent) {
-      onChange?.(e);
-    } else {
-      onChange?.(e.target.checked, e);
-    }
+    onChange?.(e.target.checked, e);
   };
 
   const classes = classnames(css.field, {

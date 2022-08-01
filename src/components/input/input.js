@@ -20,7 +20,6 @@ const Input = ({
   disabled,
   readOnly,
   onChange,
-  returnBareEvent,
   inputProps = {},
   children,
 }) => {
@@ -32,13 +31,8 @@ const Input = ({
   const LabelTag = isDate ? "div" : "label";
 
   const _onChange = (e) => {
-    if (returnBareEvent) {
-      onChange?.(e);
-    } else {
-      const newValue = isDate ? e : e.target.value;
-      const event = isDate ? { ...window.event, target: _inputRef.current } : e;
-      onChange?.(newValue, event);
-    }
+    const newValue = isDate ? e : e.target.value;
+    onChange?.(newValue, e);
   };
 
   const classes = classnames(css.input, {
