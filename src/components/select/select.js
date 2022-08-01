@@ -14,6 +14,7 @@ const Select = ({
   compact,
   value,
   autoFocus,
+  placeholder,
   required,
   disabled,
   readOnly,
@@ -62,6 +63,7 @@ const Select = ({
               aria-invalid={isValid !== undefined && !isValid}
               {...inputProps}
             >
+              {placeholder && <option value="">{placeholder}</option>}
               {options.map((option) => (
                 <option
                   key={option?.value ?? option}
