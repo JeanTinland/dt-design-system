@@ -63,7 +63,11 @@ const Select = ({
               aria-invalid={isValid !== undefined && !isValid}
               {...inputProps}
             >
-              {placeholder && <option value="">{placeholder}</option>}
+              {placeholder && (
+                <option value="" disabled={required}>
+                  {placeholder}
+                </option>
+              )}
               {options.map((option) => (
                 <option
                   key={option?.value ?? option}

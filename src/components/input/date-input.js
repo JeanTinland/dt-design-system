@@ -4,9 +4,11 @@ import DatePicker from "../date-picker";
 import * as Icons from "../icons";
 import css from "./input.module.css";
 import DateInputWrapper from "./date-input-wrapper";
+import Input from "./input";
 
 const DateInput = ({
   fieldRef,
+  inputRef,
   value,
   onChange,
   placeholder = "JJ/MM/AAAA",
@@ -48,14 +50,20 @@ const DateInput = ({
     ? new Date(value).toLocaleDateString("fr-FR")
     : placeholder;
 
-  const classes = classnames(css.field, css.dateField);
+  const classes = classnames(css.dateField);
 
   return (
     <>
-      <button className={classes} onClick={toggleDatePicker}>
-        {formatedValue}
+      <Input
+        ref={inputRef}
+        type="text"
+        className={classes}
+        inputProps={{ onClick: toggleDatePicker }}
+        value={formatedValue}
+        readOnly
+      >
         <Icons.Calendar className={css.calendarIcon} />
-      </button>
+      </Input>
       {datePickerVisible && (
         <DateInputWrapper container={fieldRef?.current}>
           <DatePicker

@@ -22,8 +22,10 @@ const Input = ({
   onChange,
   returnBareEvent,
   inputProps = {},
+  children,
 }) => {
   const ref = React.useRef();
+  const _inputRef = inputRef || React.createRef();
 
   const isDate = type === "date";
   const isValid = valid && !error;
@@ -33,7 +35,9 @@ const Input = ({
     if (returnBareEvent) {
       onChange?.(e);
     } else {
-      onChange?.(e.target.value, e);
+      const newValue = isDate ? e : e.target.value;
+      const event = isDate ? { ...window.event, target: _inputRef.current } : e;
+      onChange?.(newValue, event);
     }
   };
 
@@ -56,12 +60,14 @@ const Input = ({
             )}
           </span>
         )}
+
         {isDate ? (
           <DateInput
             value={value}
-            onChange={onChange}
+            onChange={_onChange}
             inputProps={inputProps}
             fieldRef={ref}
+            inputRef={_inputRef}
             placeholder={placeholder}
           />
         ) : (
@@ -81,6 +87,7 @@ const Input = ({
             {...inputProps}
           />
         )}
+        {children}
       </LabelTag>
       {error && (
         <div className={css.errorMessage} role="alert">
