@@ -1,6 +1,6 @@
 {
   "name": "dt-design-system",
-  "version": "0.9.16",
+  "version": "0.9.17",
   "description": "Dream Team's design system (reusable components collection)",
   "peerDependencies": {
     "classnames": "^2.3.1",

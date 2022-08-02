@@ -7,9 +7,15 @@ const DateInputWrapper = ({ container, children }) => {
   const { top: YOffset, left: XOffset } = document.body.getBoundingClientRect();
   const { top, left, height } = container.getBoundingClientRect();
 
+  const containerBottom = top + height + scrollY;
+  const containerLeft = left + scrollX;
+
+  const bodyOffsetY = YOffset + scrollY;
+  const bodyOffsetX = XOffset + scrollX;
+
   const styles = {
-    top: top + height + scrollY - YOffset,
-    left: left + scrollX - XOffset,
+    top: containerBottom - bodyOffsetY,
+    left: containerLeft - bodyOffsetX,
   };
 
   return ReactDOM.createPortal(
