@@ -24,11 +24,9 @@ const Input = ({
   children,
 }) => {
   const ref = React.useRef();
-  const _inputRef = inputRef || React.createRef();
 
   const isDate = type === "date";
   const isValid = valid && !error;
-  const LabelTag = isDate ? "div" : "label";
 
   const _onChange = (e) => {
     const newValue = isDate ? e : e.target.value;
@@ -45,7 +43,7 @@ const Input = ({
 
   return (
     <div ref={ref} className={classes}>
-      <LabelTag className={css.label}>
+      <label className={css.label}>
         {(label || (isValid && !error)) && (
           <span className={css.labelText}>
             {label}
@@ -54,16 +52,15 @@ const Input = ({
             )}
           </span>
         )}
-
         {isDate ? (
           <DateInput
             name={name}
             value={value}
             onChange={_onChange}
-            inputProps={inputProps}
-            fieldRef={ref}
-            inputRef={_inputRef}
             placeholder={placeholder}
+            fieldRef={ref}
+            inputRef={inputRef}
+            inputProps={inputProps}
           />
         ) : (
           <input
@@ -83,7 +80,7 @@ const Input = ({
           />
         )}
         {children}
-      </LabelTag>
+      </label>
       {error && (
         <div className={css.errorMessage} role="alert">
           <Icons.XCircle className={css.errorIndicator} />
