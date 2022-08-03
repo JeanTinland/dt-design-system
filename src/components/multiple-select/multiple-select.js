@@ -5,8 +5,9 @@ import * as Icons from "../icons";
 import css from "./multiple-select.module.css";
 import cssInput from "../input/input.module.css";
 
-const getNewValues = (value, values, uniqueChoice) => {
-  const isSelected = !!values.find((o) => {
+const getNewValues = (option, values, uniqueChoice) => {
+  const value = option?.value ?? option;
+  const isSelected = values.find((o) => {
     return o === value || o.value === value;
   });
 
@@ -19,7 +20,7 @@ const getNewValues = (value, values, uniqueChoice) => {
         const isObject = typeof v === "object";
         return isObject ? v.value !== value : v !== value;
       })
-    : [...values, value];
+    : [...values, option];
 };
 
 const MultipleSelect = ({
@@ -55,11 +56,7 @@ const MultipleSelect = ({
   );
 
   const _onChange = (option) => () => {
-    const newValues = getNewValues(
-      option?.value ?? option,
-      values,
-      uniqueChoice
-    );
+    const newValues = getNewValues(option, values, uniqueChoice);
     onChange?.(newValues);
   };
 
